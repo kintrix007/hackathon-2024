@@ -1,18 +1,12 @@
 import { Player } from "./player"
 import { TitleScene } from "./titlescene"
 import { FightingScene } from "./fightingScene"
-import { ShoppingScene } from "./shoppingscene"
+import { SceneManager, GameState } from "./sceneManager"
 
 const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
 const ctx = canvas.getContext("2d")!;
 
-
-let gameState = 2;
-
-let titleScene: TitleScene;
-let shoppingScene: ShoppingScene;
-let fightingScene: FightingScene;
-
+let sceneManager: SceneManager;
 
 export function onKeydown() {
 
@@ -20,45 +14,17 @@ export function onKeydown() {
 
 export function initialize() {
     let player = new Player();
+    sceneManager = new SceneManager();
 
-    titleScene = new TitleScene();
-    shoppingScene = new ShoppingScene(player.level);
-    fightingScene = new FightingScene(player);            
+    let gameState: GameState = {
+      player,
+      sceneManager,
+    };
+
+    sceneManager.change_scene(new FightingScene(gameState));
 }
 
-//Updates the game one frame at a time.
-export function update() {
-    switch (gameState) {
-        case 0:
-            //Titlescreen phase.
-            titleScene.draw(ctx);
-            break;
-        
-        case 1:
-            //Shoppingscene phase.
-            shoppingScene.draw(ctx)
-            break;
-        case 2:
-            fightingScene.draw(ctx)
-            break;
-        case 3:
-            //finalScene.draw(ctx)
-        default:
-            break;
-    }
-
-
-
-
-
-
+// Updates the game one frame at a time.
+export function update(timestamp: DOMHighResTimeStamp) {
+    sceneManager.draw(ctx);
 }
-
-
-
-
-
-
-
-
-
