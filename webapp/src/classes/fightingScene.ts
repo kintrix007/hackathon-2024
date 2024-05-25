@@ -17,10 +17,14 @@ export class FightingScene implements Scene {
   }
 
   enter(overlay: HTMLElement) {
-
+    overlay.innerHTML = `
+      <button>Attack</button>
+      <button>Defend</button>
+      <button>Use Item</button>
+    `;
   }
 
   exit(overlay: HTMLElement) {
-
+    overlay.innerHTML = "";
   }
 }   

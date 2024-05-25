@@ -30,6 +30,6 @@ export class SceneManager {
   }
 
   getOverlay() {
-    return document.getElementById("#overlay")!;
+    return document.getElementById("overlay")!;
   }
 }
