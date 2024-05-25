@@ -1,5 +1,7 @@
 export class Player {
+    level: number;
+
     constructor() {
-        let level = 0;
+        this.level = 0;
     }
 }
