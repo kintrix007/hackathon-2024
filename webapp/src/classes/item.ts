@@ -1,6 +1,9 @@
+import { Player } from "./player";
+
 export class Item {
     public itemType = 0;
     public itemID = 0;
+    public cost = 0;
     public baseDamage = 0;
     public armorBypassDamage = 0;
     public actionPointDamage = 0;
@@ -42,6 +45,14 @@ export class Item {
 
     getActionPointCost() {
         return this.actionPointCost;
+    }
+
+    getItemType() {
+        return this.itemType;
+    }
+
+    getItemCost() {
+        return this.cost;
     }
 
     applyEffectsToPlayer(player: Player) {
