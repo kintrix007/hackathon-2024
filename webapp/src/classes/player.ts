@@ -7,10 +7,12 @@ export class Player {
     public money: number = 0;
     public actionPoints: number = 0;
 
+    public incomingDMGBoost: number = 1;
+
     public playerWeapon: Item = new Item(0);
     public playerShield: Item = new Item(1);
     
-    public consumables: Set<Item> = new Set();
+    public consumables: Array<Item> = new Array();
 
     sprite: HTMLImageElement;
     level: number;
@@ -21,35 +23,9 @@ export class Player {
         this.level = 1;
       }
 
-    public adjustHealth(healthGain: number): void {
-        if (healthGain > 0) {
-            this.healthPoints += healthGain;
-        }
-        else {
-            let damageLeft: number = this.armorPoints + healthGain;
-            this.armorPoints = Math.max(0, this.armorPoints + healthGain);
-            this.healthPoints += Math.max(0, this.healthPoints + damageLeft);
-        }
-
-        // Player dying mechanics are handled in FightingScene loop!
-    }
-
-    public getArmor(armorGain: number): void {
-        this.armorPoints = Math.max(0, this.armorPoints + armorGain);
-    }
-
     public useItem(item: Item): void {
-        if (item.getActionPointCost() > this.actionPoints) {
-            //This should go to a messaging system later!!! Ask Boldi
-            console.log("You do not have enough AP for this");
-            return;
-        }
-
-        // If damage spell, just make player enact damage on enemy.
-        item.applyEffectsToPlayer(this);
-
         if (item.isConsumable()) {
-            this.consumables.delete(item);
+            this.consumables.splice(this.consumables.indexOf(item), 1)
         }
     }
 
@@ -62,7 +38,7 @@ export class Player {
                 this.playerShield = item;
                 break;
             case 2:
-                this.consumables.add(item);
+                this.consumables.concat(item);
                 break;
             default:
                 console.log("Invalid Item type (>2) retrieved");
@@ -74,13 +50,41 @@ export class Player {
     }
 
     public doAction(): Item {
-        //TODO: implement action choice
-        return this.playerWeapon;
+        let chosenAction: Item;
+
+        while (true) {
+            //TODO: implement action choice
+            chosenAction = this.playerWeapon;
+
+            if (chosenAction.actionPointCost <= this.actionPoints) {
+                this.useItem(chosenAction);
+                break;
+            } else {
+                //TODO: Text Splash for too few AP
+            }
+        }
+
+        this.healthPoints += chosenAction.healAmount;
+        this.actionPoints += chosenAction.actionPointGain;
+        this.actionPoints -= chosenAction.actionPointCost;
+        return chosenAction;
     }
 
     public ActionEffect(effectItem: Item): void {
-        //TODO: implement action choice
-        
-    }
+        let armorDamage = Math.floor(effectItem.baseDamage * this.incomingDMGBoost);
+        let overflowDamage = 0;
 
+        if (this.armorPoints - armorDamage < 0) {
+            this.armorPoints = 0
+            overflowDamage = this.armorPoints - armorDamage;
+        } else {
+            this.armorPoints -= armorDamage; 
+        }
+
+        this.healthPoints = Math.min(0, this.healthPoints + overflowDamage - this.incomingDMGBoost * effectItem.armorBypassDamage)
+
+        this.actionPoints -= effectItem.actionPointDamage; 
+
+        this.incomingDMGBoost = effectItem.incomingDamageBoost
+    }
 }

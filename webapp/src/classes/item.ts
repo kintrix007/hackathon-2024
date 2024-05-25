@@ -1,18 +1,17 @@
-import { Player } from "./player";
-
 export class Item {
     public itemType = 0;
     public itemID = 0;
     public cost = 0;
+    public actionPointCost = 1;
+    public actionPointGain = 0;
+
     public baseDamage = 0;
     public armorBypassDamage = 0;
+    
     public actionPointDamage = 0;
     public healAmount = 0;
-    public actionPointDelay = 0;
-    public actionPointCost = 0;
-    public attackDamageBoost = 0;
-    public incomingDamageBoost = 0;
-    public applyStatusEffect = 0;
+    public incomingDamageBoost = 1;
+    
 
     constructor(itemID: number) {
         //this.unpackDataFromTable(itemID);
@@ -54,11 +53,4 @@ export class Item {
     getItemCost() {
         return this.cost;
     }
-
-    applyEffectsToPlayer(player: Player) {
-        //TODO: Make this
-        return
-    }
-    
-
 }
