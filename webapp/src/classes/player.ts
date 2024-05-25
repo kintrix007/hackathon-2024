@@ -1,4 +1,4 @@
-class Player {
+export class Player {
     public maxHealthPoints: number = 0;
     public healthPoints: number = 0;
     public armorPoints: number = 0;
@@ -9,6 +9,15 @@ class Player {
     public playerShield: Item = new Item(1);
     
     public consumables: Set<Item> = new Set();
+
+    sprite: HTMLImageElement;
+    level: number;
+
+    constructor() {
+        this.sprite = document.createElement("img");
+        this.sprite.src = "/assets/player.png";
+        this.level = 1;
+      }
 
     public adjustHealth(healthGain: number): void {
         if (healthGain > 0) {
