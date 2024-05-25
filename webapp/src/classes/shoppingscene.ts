@@ -33,11 +33,6 @@ export class ShoppingScene {
         ctx.drawImage(this.shopbackground, 0, 0, ctx.canvas.width, ctx.canvas.height)        
         ctx.drawImage(this.shopUIoverlay, 0, 0, ctx.canvas.width, ctx.canvas.height)
         ctx.drawImage(this.player.sprite, 110, 350, 384, 384)
-
-        
-
-
-
     }
 
 
