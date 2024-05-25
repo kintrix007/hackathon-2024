@@ -1,8 +1,12 @@
+import { Player } from "./player"
+
 export class ShoppingScene {
     availableItems: Array<Item>;
+    player: Player;
 
-    constructor(playerLevel: number) {
-        this.availableItems = ShoppingScene.generateShopItems(playerLevel);
+    constructor(player: Player) {
+        this.availableItems = ShoppingScene.generateShopItems(player.level);
+        this.player = player
     }
   
     static generateShopItems(playerLevel: number) {
@@ -20,6 +24,12 @@ export class ShoppingScene {
     draw(ctx: CanvasRenderingContext2D) {
         ctx.fillStyle = "Black"
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+        
+        ctx.drawImage(this.player.playerSprite)
+
+
+
+
     }
 
 

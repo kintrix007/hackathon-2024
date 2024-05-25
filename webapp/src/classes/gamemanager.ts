@@ -7,7 +7,7 @@ const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
 const ctx = canvas.getContext("2d")!;
 
 
-let gameState = 2;
+let gameState = 1;
 
 let titleScene: TitleScene;
 let shoppingScene: ShoppingScene;
@@ -22,7 +22,7 @@ export function initialize() {
     let player = new Player();
 
     titleScene = new TitleScene();
-    shoppingScene = new ShoppingScene(player.level);
+    shoppingScene = new ShoppingScene(player);
     fightingScene = new FightingScene(player);            
 }
 
