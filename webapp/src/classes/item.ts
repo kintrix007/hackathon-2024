@@ -1,60 +1,42 @@
 class Item {
-  this.baseDamage = 0;
+    public itemType = 0;
+    public baseDamage = 0;
+    public armorBypassDamage = 0;
+    public actionPointDamage = 0;
+    public healAmount = 0;
+    public actionPointDelay = 0;
+    public actionPointCost = 0;
+    public attackDamageBoost = 0;
+    public incomingDamageBoost = 0;
+    public applyStatusEffect = 0;
 
+    constructor(itemID: number) {
+        //this.unpackDataFromTable(itemID);
 
+        this.itemType = -1;
+    }
 
-  constructor(itemID) {
-    this.unpackDataFromTable(itemID);
-  }
-
-  unpackDataFromTable(itemID) {
+    unpackDataFromTable(itemID: number) {
     // something to do with getDataFromTable...
-    console.log(this.getDataFromTable(itemID));
-  }
+        console.log(Item.getDataFromTable(itemID));
+    }
 
-  static getDataFromTable(itemID) {
+    static getDataFromTable(itemID: number) {
     // A function for initializing the data in an Item.
-    return [0, 0, 0];
-  }
+        return [0, 0, 0];
+    }
 
-  get shieldValue() {
-    return this.shieldValue;
-  }
 
-  get spellAttackDamage() {
-    return this.spellAttackDamage;
-  }
+    isWeapon() {
+        return this.itemType === 0;
+    }
 
-  get actionPointCost() {
-    return this.actionPointCost;
-  }
+    isShield() {
+        return this.itemType === 1;
+    }
 
-  get attackDamage() {
-    return this.attackDamage;
-  }
-
-  isWeapon() {
-    return this.itemType === 0;
-  }
-
-  isShield() {
-    return this.itemType === 1;
-  }
-
-  isConsumable() {
-    return this.itemType === 2;
-  }
-
-  get itemType() {
-    return this.itemType;
-  }
-
-  applyEffectsToPlayer(player) {
-    // Implement this method
-  }
-
-  get itemCost() {
-    return this.itemCost;
-  }
+    isConsumable() {
+        return this.itemType === 2;
+    }
 }
 
