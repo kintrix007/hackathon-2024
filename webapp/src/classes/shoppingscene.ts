@@ -1,14 +1,18 @@
 import { Player } from "./player"
+import { Item } from "./item";
+import { GameState, Scene } from "./sceneManager";
 
-export class ShoppingScene {
+export class ShoppingScene implements Scene {
     availableItems: Array<Item>;
     player: Player;
     shopbackground: HTMLImageElement;
     shopUIoverlay: HTMLImageElement;
+    state: GameState;
 
-    constructor(player: Player) {
-        this.availableItems = ShoppingScene.generateShopItems(player.level);
-        this.player = player
+    constructor(state: GameState) {
+        this.state = state;
+        this.player = state.player;
+        this.availableItems = ShoppingScene.generateShopItems(this.player.level);
 
         this.shopbackground = document.createElement("img");
         this.shopbackground.src = "/assets/shop_background.png";
@@ -16,10 +20,18 @@ export class ShoppingScene {
         this.shopUIoverlay = document.createElement("img");
         this.shopUIoverlay.src = "/assets/shop_overlay.png";
     }
-  
+
+    enter() {
+
+    }
+
+    exit() {
+
+    }
+
     static generateShopItems(playerLevel: number) {
       // Some fancy algorithm for creating items...
-        return [];
+      return [];
     }
 
     playerBuysItemFromShop(player: Player, item: Item) {
@@ -31,7 +43,7 @@ export class ShoppingScene {
 
     generateShopItems(playerLevel: number) {
         // Some fancy algorithm for creating items...
-          return [];
+        return [];
     }
 
     draw(ctx: CanvasRenderingContext2D) {
@@ -39,7 +51,4 @@ export class ShoppingScene {
         ctx.drawImage(this.shopUIoverlay, 0, 0, ctx.canvas.width, ctx.canvas.height)
         ctx.drawImage(this.player.sprite, 110, 350, 384, 384)
     }
-
-
-
 }
