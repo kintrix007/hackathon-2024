@@ -21,14 +21,43 @@ export class ShoppingScene implements Scene {
         this.shopUIoverlay.src = "/assets/shop_overlay.png";
     }
 
+    getItemButton(item: Item) {
+      const button = document.createElement("button");
+      button.appendChild(item.sprite);
+      button.classList.add("item");
+      return button;
+    }
+
     enter(overlay: HTMLElement) {
-      overlay.innerHTML = `
-        <button>Item 1</button>
-      `;
+        const inventory = document.createElement("div");
+        inventory.classList.add("inventory");
+
+        const shop = document.createElement("div");
+        shop.classList.add("item-list")
+        for (let i = 0; i < 10; i++) {
+            const item = new Item();
+            shop.appendChild(this.getItemButton(item));
+        }
+
+        const owned = document.createElement("div");
+        owned.classList.add("item-list")
+        for (let i = 0; i < 10; i++) {
+            const item = new Item();
+            owned.appendChild(this.getItemButton(item));
+        }
+
+        inventory.appendChild(shop);
+        inventory.appendChild(owned);
+        overlay.appendChild(inventory);
     }
 
     exit(overlay: HTMLElement) {
       overlay.innerHTML = "";
+    }
+
+    static generateShopItems(playerLevel: number) {
+      // Some fancy algorithm for creating items...
+      return [];
     }
 
     playerBuysItemFromShop(player: Player, item: Item) {
@@ -38,7 +67,7 @@ export class ShoppingScene implements Scene {
         player.getMoney(-item.getItemCost());
     }
 
-    static generateShopItems(playerLevel: number) {
+    generateShopItems(playerLevel: number) {
         // Some fancy algorithm for creating items...
         return [];
     }

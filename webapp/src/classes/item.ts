@@ -11,12 +11,14 @@ export class Item {
     public actionPointDamage = 0;
     public healAmount = 0;
     public incomingDamageBoost = 1;
-    
+    public sprite: HTMLImageElement;
 
     constructor(itemID: number) {
         //this.unpackDataFromTable(itemID);
         this.itemID = itemID;
         this.itemType = -1;
+        this.sprite = document.createElement("img");
+        this.sprite.src = "/assets/sword.png";
     }
 
     unpackDataFromTable(itemID: number) {
