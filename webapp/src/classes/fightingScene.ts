@@ -1,11 +1,12 @@
 class FightingScene {
-    constructor(player: Player, enemy: Enemy) {
+    public player;
+
+    constructor(player: Player) {
         this.player = player;
-        this.enemy = enemy;
     }
 
     combatCycle() {
-        playerAction = player.getAction()
+        let playerAction = player.getAction()
 
     }
 }   
