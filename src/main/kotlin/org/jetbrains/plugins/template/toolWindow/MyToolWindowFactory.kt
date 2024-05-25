@@ -11,6 +11,8 @@ import com.intellij.ui.content.ContentFactory
 import org.jetbrains.plugins.template.MyBundle
 import org.jetbrains.plugins.template.services.MyProjectService
 import javax.swing.JButton
+import javax.swing.JLabel
+import javax.swing.JPanel
 
 
 class MyToolWindowFactory : ToolWindowFactory {
