@@ -4,7 +4,7 @@ import { initialize, onKeydown, update } from './classes/gamemanager';
 function main() {
   initialize();
 
-  function loop(timestamp) {
+  function loop(timestamp: DOMHighResTimeStamp) {
     update(timestamp);
     window.requestAnimationFrame(loop);
   }
