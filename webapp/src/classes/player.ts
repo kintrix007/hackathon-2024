@@ -74,4 +74,14 @@ export class Player {
         this.money = Math.max(0, this.money + moneyGet);
     }
 
+    public doAction(): Item {
+        //TODO: implement action choice
+        return this.playerWeapon;
+    }
+
+    public ActionEffect(effectItem: Item): void {
+        //TODO: implement action choice
+        
+    }
+
 }

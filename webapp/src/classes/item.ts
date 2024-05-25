@@ -1,5 +1,6 @@
 export class Item {
     public itemType = 0;
+    public itemID = 0;
     public baseDamage = 0;
     public armorBypassDamage = 0;
     public actionPointDamage = 0;
@@ -12,7 +13,7 @@ export class Item {
 
     constructor(itemID: number) {
         //this.unpackDataFromTable(itemID);
-
+        this.itemID = itemID;
         this.itemType = -1;
     }
 

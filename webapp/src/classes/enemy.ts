@@ -1,11 +1,15 @@
-class Enemy {
+import { Item } from "./item";
+
+
+export class Enemy {
     public maxHealthPoints: number = 0;
     public healthPoints: number = 0;
     public armorPoints: number = 0;
+    public money: number = 0;
     public actionPoints: number = 0;
 
-    public EnemyWeapon: Item = new Item(0);
-    public EnemyShield: Item = new Item(1);
+    public playerWeapon: Item = new Item(0);
+    public playerShield: Item = new Item(1);
     
     public consumables: Set<Item> = new Set();
 
@@ -14,7 +18,7 @@ class Enemy {
 
     constructor() {
         this.sprite = document.createElement("img");
-        //this.sprite.src = "/assets/player.png";
+        this.sprite.src = "/assets/player.png";
         this.level = 1;
       }
 
@@ -68,6 +72,16 @@ class Enemy {
 
     public getMoney(moneyGet: number): void {
         this.money = Math.max(0, this.money + moneyGet);
+    }
+
+    public doAction(): Item {
+        //TODO: implement action choice
+        return this.playerWeapon;
+    }
+
+    public ActionEffect(effectItem: Item): void {
+        //TODO: implement action choice
+        
     }
 
 }
