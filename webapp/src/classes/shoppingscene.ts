@@ -4,6 +4,7 @@ export class ShoppingScene {
     availableItems: Array<Item>;
     player: Player;
     shopbackground: HTMLImageElement;
+    shopUIoverlay: HTMLImageElement;
 
     constructor(player: Player) {
         this.availableItems = ShoppingScene.generateShopItems(player.level);
@@ -11,6 +12,9 @@ export class ShoppingScene {
 
         this.shopbackground = document.createElement("img");
         this.shopbackground.src = "/assets/shop_background.png";
+
+        this.shopUIoverlay = document.createElement("img");
+        this.shopUIoverlay.src = "/assets/shop_overlay.png";
     }
   
     static generateShopItems(playerLevel: number) {
@@ -27,8 +31,10 @@ export class ShoppingScene {
 
     draw(ctx: CanvasRenderingContext2D) {
         ctx.drawImage(this.shopbackground, 0, 0, ctx.canvas.width, ctx.canvas.height)        
-        ctx.drawImage(this.player.sprite, 150, 350, 384, 384)
+        ctx.drawImage(this.shopUIoverlay, 0, 0, ctx.canvas.width, ctx.canvas.height)
+        ctx.drawImage(this.player.sprite, 110, 350, 384, 384)
 
+        
 
 
 
