@@ -1,7 +1,6 @@
 const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
 const ctx = canvas.getContext("2d")!;
 
-ctx.fillStyle = "green";
 
 let gameState = 0;
 
@@ -18,7 +17,7 @@ export function initialize() {
     let player = new Player();
 
     titleScene = new TitleScene();
-    shoppingScene = new ShoppingScene();
+    shoppingScene = new ShoppingScene(player.level);
     fightingScene = new FightingScene(player);            
 }
 
