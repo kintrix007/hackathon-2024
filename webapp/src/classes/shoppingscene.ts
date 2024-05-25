@@ -1,3 +1,3 @@
-class ShoppingScene {
+export class ShoppingScene {
     
 }

@@ -1,4 +1,4 @@
-class TitleScene {
+export class TitleScene {
     constructor() {
 
     }

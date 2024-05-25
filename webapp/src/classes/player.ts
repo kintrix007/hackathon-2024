@@ -1,3 +1,3 @@
-class Player {
+export class Player {
     
 }
