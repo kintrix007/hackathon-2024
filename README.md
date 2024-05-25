@@ -1,9 +1,11 @@
 # Group 17 - Hackathon
 
-## Navara
+## Jetbrains
 
-- [[Slides]](https://cdn.discordapp.com/attachments/1243835483360985120/1243878594153938996/Navara_Hackathon_presentatie.pptx?ex=665313b6&is=6651c236&hm=120b5b5cc9fe33de9158b563b28034300e650c0f17cd34ee59c9aad867d1bfa9&)
+- [[Slides]](https://cdn.discordapp.com/attachments/1243835609739563098/1243878453166735391/JetBrains_HackDelft_Presentation.pdf?ex=66531395&is=6651c215&hm=2f3d7a5dce5589c6aea671f0f4ce53d4a0de0ea77c8e632bafa8a347b453ab0e&)
 
-- [[Problem Description]](https://cdn.discordapp.com/attachments/1243835483360985120/1243879682685014158/Energy_Network_Optimization_Case_Navara.pdf?ex=665314ba&is=6651c33a&hm=17e72978d00c3e7145596a0180faba4b3353bbbd4461fb70106243c1e6572e53&)
+- [[Problem Statement]](https://cdn.discordapp.com/attachments/1243835609739563098/1243879956707020842/hackdelft24_Challenge__Help_the_Developer_1.pdf?ex=665314fb&is=6651c37b&hm=ea6c21e3496e5fd3510c60553b6555d352c9d5fd014227583a929411c0acfad4&)
 
-- [[Dataset]](https://we.tl/t-ol94RgZ7o8)
+- [[Getting Started Guide]](https://plugins.jetbrains.com/docs/intellij/plugins-quick-start.html)
+
+- [[Plugin Template]](https://github.com/JetBrains/intellij-platform-plugin-template)
