@@ -3,10 +3,14 @@ import { Player } from "./player"
 export class ShoppingScene {
     availableItems: Array<Item>;
     player: Player;
+    shopbackground: HTMLImageElement;
 
     constructor(player: Player) {
         this.availableItems = ShoppingScene.generateShopItems(player.level);
         this.player = player
+
+        this.shopbackground = document.createElement("img");
+        this.shopbackground.src = "/assets/shop_background.png";
     }
   
     static generateShopItems(playerLevel: number) {
@@ -22,10 +26,8 @@ export class ShoppingScene {
     }
 
     draw(ctx: CanvasRenderingContext2D) {
-        ctx.fillStyle = "Black"
-        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-        
-        ctx.drawImage(this.player.playerSprite)
+        ctx.drawImage(this.shopbackground, 0, 0, ctx.canvas.width, ctx.canvas.height)        
+        ctx.drawImage(this.player.sprite, 150, 350, 384, 384)
 
 
 
