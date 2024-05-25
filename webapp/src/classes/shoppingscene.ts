@@ -1,4 +1,4 @@
-class ShoppingScene {
+export class ShoppingScene {
     availableItems: Array<Item>;
 
     constructor(playerLevel: number) {

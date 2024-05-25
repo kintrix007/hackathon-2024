@@ -1,8 +1,13 @@
+import { Player } from "./player"
+import { TitleScene } from "./titlescene"
+import { FightingScene } from "./fightingScene"
+import { ShoppingScene } from "./shoppingscene"
+
 const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
 const ctx = canvas.getContext("2d")!;
 
 
-let gameState = 0;
+let gameState = 2;
 
 let titleScene: TitleScene;
 let shoppingScene: ShoppingScene;

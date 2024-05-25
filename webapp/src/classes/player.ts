@@ -1,4 +1,4 @@
-class Player {
+export class Player {
     constructor() {
         let level = 0;
     }
