@@ -44,7 +44,7 @@ export class Item {
         return this.actionPointCost;
     }
 
-    applyEffectsToPlayer(player: Player) {
+    applyItemEffectsToPlayer(player: Player) {
         //TODO: Make this
         return
     }
