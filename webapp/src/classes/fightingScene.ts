@@ -14,8 +14,6 @@ export class FightingScene {
     ctx.fillStyle = "black";
     ctx.fillRect(100, 100, 128, 128);
 
-    const playerSprite = document.createElement("img");
-    playerSprite.src = "/assets/player.png";
-    ctx.drawImage(playerSprite, 100, 100, 128, 128);
+    ctx.drawImage(this.player.sprite, 100, 100, 128, 128);
   }
 }   

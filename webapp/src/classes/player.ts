@@ -1,7 +1,10 @@
 export class Player {
-    level: number;
+  sprite: HTMLImageElement
+  level: number
 
-    constructor() {
-        this.level = 0;
-    }
+  constructor() {
+    this.sprite = document.createElement("img");
+    this.sprite.src = "/assets/player.png";
+    this.level = 1;
+  }
 }
