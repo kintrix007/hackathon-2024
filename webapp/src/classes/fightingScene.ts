@@ -1,3 +1,4 @@
+import { Enemy } from "./enemy";
 import { GameState, Scene } from "./sceneManager";
 
 export class FightingScene implements Scene {
@@ -7,7 +8,21 @@ export class FightingScene implements Scene {
     this.state = state;
   }
 
-  combatCycle() {
+  combatCycle(enemy: Enemy) {
+    let playerAction = this.state.player.doAction();
+    enemy.ActionEffect(playerAction);
+
+    if (enemy.healthPoints == 0) {
+      //TODO: get rewards, victory screen, next enemy...
+    }
+
+    let enemyAction = enemy.doAction();
+    this.state.player.ActionEffect(enemyAction);
+
+    if (this.state.player.healthPoints == 0) {
+      //TODO: death screen, maybe small penalty or smthn?
+    }
+    
   }
 
   draw(ctx: CanvasRenderingContext2D) {

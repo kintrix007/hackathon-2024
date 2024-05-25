@@ -31,11 +31,6 @@ export class ShoppingScene implements Scene {
       overlay.innerHTML = "";
     }
 
-    static generateShopItems(playerLevel: number) {
-      // Some fancy algorithm for creating items...
-      return [];
-    }
-
     playerBuysItemFromShop(player: Player, item: Item) {
         // This function will react to a player selecting an item, and moves it to their inventory.
         this.availableItems.push(item);
@@ -43,7 +38,7 @@ export class ShoppingScene implements Scene {
         player.getMoney(-item.getItemCost());
     }
 
-    generateShopItems(playerLevel: number) {
+    static generateShopItems(playerLevel: number) {
         // Some fancy algorithm for creating items...
         return [];
     }
