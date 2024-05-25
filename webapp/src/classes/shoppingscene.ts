@@ -21,12 +21,14 @@ export class ShoppingScene implements Scene {
         this.shopUIoverlay.src = "/assets/shop_overlay.png";
     }
 
-    enter() {
-
+    enter(overlay: HTMLElement) {
+      overlay.innerHTML = `
+        <button>Item 1</button>
+      `;
     }
 
-    exit() {
-
+    exit(overlay: HTMLElement) {
+      overlay.innerHTML = "";
     }
 
     static generateShopItems(playerLevel: number) {
