@@ -1,4 +1,4 @@
-class Item {
+export class Item {
     public itemType = 0;
     public baseDamage = 0;
     public armorBypassDamage = 0;
@@ -39,6 +39,14 @@ class Item {
         return this.itemType === 2;
     }
 
+    getActionPointCost() {
+        return this.actionPointCost;
+    }
+
+    applyEffectsToPlayer(player: Player) {
+        //TODO: Make this
+        return
+    }
     
 
 }

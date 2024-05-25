@@ -1,3 +1,6 @@
+import { Item } from "./item";
+
+
 export class Player {
     public maxHealthPoints: number = 0;
     public healthPoints: number = 0;
