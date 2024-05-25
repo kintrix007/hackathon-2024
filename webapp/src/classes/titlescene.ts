@@ -10,7 +10,6 @@ export class TitleScene {
     }
 
     draw(ctx: CanvasRenderingContext2D) {
-
         let splashText = this.generateSplashText()
 
         ctx.fillStyle = "black";
