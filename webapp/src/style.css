@@ -6,6 +6,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#canvas {
+  position: absolute;
+}
+
+#overlay {
+  position: absolute;
+}
+
 .items {
   border: 4px solid white;
   border-radius: 16px;

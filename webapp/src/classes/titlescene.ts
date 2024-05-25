@@ -1,12 +1,25 @@
-export class TitleScene {
-    constructor() {
+import { GameState, Scene } from "./sceneManager";
+import { FightingScene } from "./fightingScene";
 
+export class TitleScene implements Scene {
+    state: GameState
+
+    constructor(state: GameState) {
+      this.state = state;
     }
 
     generateSplashText() {
         //Routine for autogenerating the splashtext.
 
         return ["The princess is in another castle.", "Our young developer quests on..."]
+    }
+
+    enter() {
+      this.state.sceneManager.change_scene(new FightingScene(this.state));
+    }
+
+    exit() {
+
     }
 
     draw(ctx: CanvasRenderingContext2D) {
