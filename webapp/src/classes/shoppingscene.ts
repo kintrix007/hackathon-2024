@@ -21,12 +21,17 @@ export class ShoppingScene {
       // Some fancy algorithm for creating items...
         return [];
     }
-  
+
     playerBuysItemFromShop(player: Player, item: Item) {
-      // This function will react to a player selecting an item, and moves it to their inventory.
-        this.availableItems = this.availableItems.filter(i => i !== item);
+        // This function will react to a player selecting an item, and moves it to their inventory.
+        this.availableItems.remove(item);
         player.getItem(item);
         player.getMoney(-item.getItemCost());
+    }
+
+    generateShopItems(playerLevel: number) {
+        // Some fancy algorithm for creating items...
+          return [];
     }
 
     draw(ctx: CanvasRenderingContext2D) {
@@ -36,6 +41,5 @@ export class ShoppingScene {
     }
 
 
-  }
-  
-  
+
+}
