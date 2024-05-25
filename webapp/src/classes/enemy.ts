@@ -69,5 +69,4 @@ class Enemy {
     public getMoney(moneyGet: number): void {
         this.money = Math.max(0, this.money + moneyGet);
     }
-
 }
