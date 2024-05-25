@@ -6,7 +6,7 @@ import com.intellij.openapi.project.Project
 import org.jetbrains.plugins.template.MyBundle
 
 @Service(Service.Level.PROJECT)
-class MyProjectService(project: Project) {
+class TimeService(project: Project) {
 
     init {
         thisLogger().info(MyBundle.message("projectService", project.name))

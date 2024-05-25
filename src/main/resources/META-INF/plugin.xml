@@ -8,6 +8,18 @@
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow factoryClass="org.jetbrains.plugins.template.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="org.jetbrains.plugins.template.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+    </applicationListeners>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="TimeService"/>
+    </extensions>
+
     <actions>
         <action
                 id="game-window"

@@ -9,10 +9,8 @@ import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.content.ContentFactory
 import org.jetbrains.plugins.template.MyBundle
-import org.jetbrains.plugins.template.services.MyProjectService
+import org.jetbrains.plugins.template.services.TimeService
 import javax.swing.JButton
-import javax.swing.JLabel
-import javax.swing.JPanel
 
 
 class MyToolWindowFactory : ToolWindowFactory {
@@ -31,7 +29,7 @@ class MyToolWindowFactory : ToolWindowFactory {
 
     class MyToolWindow(toolWindow: ToolWindow) {
 
-        private val service = toolWindow.project.service<MyProjectService>()
+        private val service = toolWindow.project.service<TimeService>()
 
         fun getContent() = JBPanel<JBPanel<*>>().apply {
             val label = JBLabel(MyBundle.message("randomLabel", "?"))
