@@ -3,6 +3,8 @@ import { SceneManager, GameState } from "./sceneManager"
 import { FightingScene } from "./fightingScene"
 import { ShoppingScene } from "./shoppingscene";
 import { TitleScene } from "./titlescene"
+import { VictoryScene } from "./victoryscene";
+import { DefeatScene } from "./defeatscene";
 
 const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
 const ctx = canvas.getContext("2d")!;
@@ -23,7 +25,7 @@ export function initialize() {
     };
 
 
-    sceneManager.change_scene(new ShoppingScene(gameState));
+    sceneManager.change_scene(new TitleScene(gameState));
 }
 
 // Updates the game one frame at a time.

@@ -9,21 +9,25 @@ interface WeaponData {
   baseDamage: number;
   armorBypassDamage: number;
   actionPointCost: number;
+  displayName: String;
 }
 
 interface ShieldData {
   type: "shield";
   actionPointCost: number;
   incomingDamageBoost: number;
+  displayName: String;
 }
 
 interface ConsumableData {
   type: "consumable";
+  displayName: String;
 }
 
 export class Item {
     public itemID: string;
     public itemType: "weapon" | "shield" | "consumable";
+    public displayName: String;
 
     public cost = 0;
     public actionPointCost = 1;
@@ -38,6 +42,7 @@ export class Item {
     public incomingDamageBoost = 1;
     public sprite: HTMLImageElement;
 
+
     constructor(itemID: string) {
         this.itemID = itemID;
         // This will be overridden when we load the data from the JSON
@@ -46,6 +51,7 @@ export class Item {
         this.sprite = document.createElement("img");
         this.sprite.src = `/assets/${itemID}.png`;
 
+        this.displayName = '';
         this.constructFromJson(itemID);
     }
 
@@ -54,6 +60,7 @@ export class Item {
       if (data == null) return null;
 
       this.cost = data.cost;
+      this.displayName = data.displayName;
 
       // TODO: Fill in the rest of the data.
       switch (data.type) {
@@ -69,7 +76,7 @@ export class Item {
           this.actionPointCost = data.actionPointCost;
           this.incomingDamageBoost = data.incomingDamageBoost;
           break;
-          
+
         case "consumable":
           this.itemType = "consumable";
           break;

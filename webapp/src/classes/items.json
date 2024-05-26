@@ -4,16 +4,19 @@
     "type": "weapon",
     "baseDamage": 10,
     "armorBypassDamage": 5,
-    "actionPointCost": 1
+    "actionPointCost": 1,
+    "displayName": "Rust(y) sword"
   },
   "shield": {
     "cost": 10,
     "type": "shield",
     "actionPointCost": 2,
-    "incomingDamageBoost": 0.8
+    "incomingDamageBoost": 0.8,
+    "displayName": "Wooden Shield"
   },
   "beer": {
     "cost": 69,
-    "type": "consumable"
+    "type": "consumable",
+    "displayName": "Beer"
   }
 }

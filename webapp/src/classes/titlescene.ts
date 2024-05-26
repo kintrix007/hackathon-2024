@@ -9,9 +9,9 @@ export class TitleScene implements Scene {
     }
 
     generateSplashText() {
-        //Routine for autogenerating the splashtext.
+        //Routine for autogenerating the splashtext. Yet to be automated with AI?
 
-        return ["The princess is in another castle.", "Our young developer quests on..."]
+        return ["There once was a Junior dev who caused too many merge conflicts...", "Clippy demanded he could help the dev clean his branch."]
     }
 
     enter() {
@@ -19,7 +19,7 @@ export class TitleScene implements Scene {
         this.state.sceneManager.change_scene(new ShoppingScene(this.state));
       };
 
-      setTimeout(changeToShopping, 1000 * 3);
+      setTimeout(changeToShopping, 1000 * 8);
     }
 
     exit() {
@@ -35,8 +35,9 @@ export class TitleScene implements Scene {
         ctx.strokeStyle = '#FFFFFF';
         ctx.fillStyle = "#FFFFFF";
         ctx.textAlign = "center";
-        ctx.font = "78px Verdana";
+        ctx.font = "40px Verdana";
         ctx.fillText(splashText[0] , ctx.canvas.width/2, ctx.canvas.height/2-50);
+
         ctx.fillText(splashText[1], ctx.canvas.width/2, ctx.canvas.height/2+50)
     }
 }

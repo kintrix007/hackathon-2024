@@ -1,11 +1,13 @@
 import { Enemy } from "./enemy";
 import { GameState, Scene } from "./sceneManager";
 import { Item } from "./item";
+import { VictoryScene } from "./victoryscene";
 
 export class FightingScene implements Scene {
   state: GameState;
   fightingBackground: HTMLImageElement;
   enemy: Enemy;
+  latestAction: String;
 
   constructor(state: GameState) {
     this.state = state;
@@ -13,16 +15,18 @@ export class FightingScene implements Scene {
     
     this.fightingBackground = document.createElement("img");
     this.fightingBackground.src = "/assets/battle_background.png";
+    this.latestAction = ``;
   }
 
   combatCycle(item: Item) {
     if (this.state.player.actionPoints >= item.actionPointCost) {
       this.enemy.ActionEffect(item);
       this.state.player.doAction(item)
+      this.latestAction = `Player used ${item.displayName}`
 
       if (this.enemy.healthPoints == 0) {
-        //TODO: get rewards, victory screen, next enemy...
-      
+        //doing: get rewards, victory screen, next enemy...
+        this.state.sceneManager.change_scene(new VictoryScene(this.state));
       }
     }
     
@@ -31,6 +35,8 @@ export class FightingScene implements Scene {
       const interval = setInterval(()=>{
         let enemyAction = this.enemy.doAction();
         this.state.player.ActionEffect(enemyAction);
+        this.latestAction = `Enemy used ${item.displayName}`
+
 
         if (this.state.player.healthPoints == 0) {
           //TODO: death screen, maybe small penalty or smthn?
@@ -112,6 +118,11 @@ export class FightingScene implements Scene {
     ctx.font = "20px Verdana";
     ctx.fillText(`Action Points: ${this.enemy.actionPoints}`, 1000, 870)
     ctx.stroke()
+
+    ctx.font = "40px Verdana";
+    ctx.fillText(`${this.latestAction}`, 400, 400)
+    ctx.stroke()
+
   }
 
   
@@ -141,7 +152,7 @@ export class FightingScene implements Scene {
     //TODO Generate an enemy randomly. Or don't
     this.enemy = new Enemy;
     this.enemy.maxHealthPoints = 150;
-    this.enemy.healthPoints = 100;
+    this.enemy.healthPoints = 1;
     this.enemy.armorPoints = 100;
     this.enemy.actionPoints = 4;
   }
