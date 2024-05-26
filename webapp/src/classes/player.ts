@@ -29,7 +29,7 @@ export class Player {
         }
     }
 
-    public getItem(item: Item): void {
+    public addItem(item: Item): void {
         switch (item.getItemType()) {
             case 0:
                 this.playerWeapon = item;
@@ -38,7 +38,7 @@ export class Player {
                 this.playerShield = item;
                 break;
             case 2:
-                this.consumables.concat(item);
+                this.consumables.push(item);
                 break;
             default:
                 console.log("Invalid Item type (>2) retrieved");
@@ -48,7 +48,7 @@ export class Player {
     public getMoney(moneyGet: number): void {
         this.money = Math.max(0, this.money + moneyGet);
     }
-
+    
     public doAction(): Item {
         let chosenAction: Item;
 

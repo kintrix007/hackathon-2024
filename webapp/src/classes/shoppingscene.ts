@@ -8,6 +8,7 @@ export class ShoppingScene implements Scene {
     shopbackground: HTMLImageElement;
     shopUIoverlay: HTMLImageElement;
     state: GameState;
+    currentDescription: string | null;
 
     constructor(state: GameState) {
         this.state = state;
@@ -19,13 +20,29 @@ export class ShoppingScene implements Scene {
 
         this.shopUIoverlay = document.createElement("img");
         this.shopUIoverlay.src = "/assets/shop_overlay.png";
+        this.currentDescription = null;
     }
 
     getItemButton(item: Item) {
       const button = document.createElement("button");
       button.appendChild(item.sprite);
       button.classList.add("item");
+      const desc = `${item.cost}`;
+      button.onpointerenter = () => this.showDescription(desc);
+      button.onpointerleave = () => this.showDescription(null);
       return button;
+    }
+
+    showDescription(desc: string | null) {
+      this.currentDescription = desc;
+    }
+
+    static purchase(player: Player, item: Item) {
+      if (player.money < item.cost) return false;
+
+      player.money -= item.cost;
+      player.addItem(item);
+      return true;
     }
 
     enter(overlay: HTMLElement) {
@@ -33,17 +50,30 @@ export class ShoppingScene implements Scene {
         inventory.classList.add("inventory");
 
         const shop = document.createElement("div");
+        const owned = document.createElement("div");
+
+        shop.id = "shop";
         shop.classList.add("item-list")
-        for (let i = 0; i < 10; i++) {
-            const item = new Item();
-            shop.appendChild(this.getItemButton(item));
+        for (const item of this.availableItems) {
+          const button = this.getItemButton(item);
+          button.onclick = () => {
+            if (ShoppingScene.purchase(this.state.player, item)) {
+              this.availableItems = this.availableItems.filter(x => x != item);
+              button.remove();
+              owned.appendChild(this.getItemButton(item));
+              this.showDescription(null);
+            }
+          }
+
+          shop.appendChild(button);
         }
 
-        const owned = document.createElement("div");
+        owned.id = "owned";
         owned.classList.add("item-list")
-        for (let i = 0; i < 10; i++) {
-            const item = new Item();
-            owned.appendChild(this.getItemButton(item));
+        for (let i = 0; i < 1; i++) {
+          const item = new Item(0);
+          const button = this.getItemButton(item)
+          owned.appendChild(button);
         }
 
         inventory.appendChild(shop);
@@ -57,24 +87,23 @@ export class ShoppingScene implements Scene {
 
     static generateShopItems(playerLevel: number) {
       // Some fancy algorithm for creating items...
-      return [];
+      return Array.from({ length: 5 }).map(x => new Item(0));
     }
 
     playerBuysItemFromShop(player: Player, item: Item) {
         // This function will react to a player selecting an item, and moves it to their inventory.
         this.availableItems.push(item);
-        player.getItem(item);
+        player.addItem(item);
         player.getMoney(-item.getItemCost());
-    }
-
-    generateShopItems(playerLevel: number) {
-        // Some fancy algorithm for creating items...
-        return [];
     }
 
     draw(ctx: CanvasRenderingContext2D) {
         ctx.drawImage(this.shopbackground, 0, 0, ctx.canvas.width, ctx.canvas.height)        
         ctx.drawImage(this.shopUIoverlay, 0, 0, ctx.canvas.width, ctx.canvas.height)
         ctx.drawImage(this.player.sprite, 110, 350, 384, 384)
+
+        if (this.currentDescription) {
+          ctx.fillText(this.currentDescription, 750, 150);
+        }
     }
 }

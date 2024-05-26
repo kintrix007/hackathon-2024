@@ -12,7 +12,6 @@ export class Item {
     public healAmount = 0;
     public incomingDamageBoost = 1;
     public sprite: HTMLImageElement;
-
     constructor(itemID: number) {
         //this.unpackDataFromTable(itemID);
         this.itemID = itemID;
