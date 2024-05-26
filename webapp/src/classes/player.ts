@@ -68,6 +68,13 @@ export class Player {
         return chosenAction;
     }
 
+    public getActions(): Array<Item> {
+        let actions = this.consumables
+        actions.concat(this.playerWeapon, this.playerShield)
+
+        return actions
+    }
+
     public ActionEffect(effectItem: Item): void {
         let armorDamage = Math.floor(effectItem.baseDamage * this.incomingDMGBoost);
         let overflowDamage = 0;

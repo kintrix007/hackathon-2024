@@ -109,6 +109,7 @@ export class ShoppingScene implements Scene {
         ctx.drawImage(this.player.sprite, 110, 350, 384, 384)
 
         if (this.currentDescription) {
+          ctx.fillStyle = "white";
           ctx.font = "64px Arial";
           ctx.textAlign = "left";
           ctx.fillText(this.currentDescription, 710, 140);

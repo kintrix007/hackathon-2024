@@ -78,10 +78,22 @@ export class FightingScene implements Scene {
       <button>Defend</button>
       <button>Use Item</button>
     `;
+
+    for (var action of this.state.player.getActions()) {
+      //TODO: each item has an associated action, and gets its own button.
+    }
+
+
+
+
+
+
+
+
     //TODO Generate an enemy randomly. Or don't
     this.enemy = new Enemy;
     this.enemy.maxHealthPoints = 100;
-    this.enemy.healthPoints = 99
+    this.enemy.healthPoints = 100;
 
 
   }
