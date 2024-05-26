@@ -23,6 +23,9 @@ interface ConsumableData {
   type: "consumable";
   actionsPointCost: number;
   displayName: String;
+  healAmount: number;
+  actionPointDamage: number;
+  actionPointGain: number;
 }
 
 export class Item {
@@ -80,6 +83,9 @@ export class Item {
 
         case "consumable":
           this.itemType = "consumable";
+          this.healAmount = data.healAmount;
+          this.actionPointDamage = data.actionPointDamage;
+          this.actionPointGain = data.actionPointGain;
           break;
         default:
           alert(`Item '${itemID}' has invalid type.`);
