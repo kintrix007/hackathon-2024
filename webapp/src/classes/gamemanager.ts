@@ -22,7 +22,8 @@ export function initialize() {
       sceneManager,
     };
 
-    sceneManager.change_scene(new TitleScene(gameState));
+
+    sceneManager.change_scene(new FightingScene(gameState));
 }
 
 // Updates the game one frame at a time.

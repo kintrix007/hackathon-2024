@@ -5,6 +5,7 @@ export interface GameState {
   sceneManager: SceneManager;
 }
 
+
 export interface Scene {
   enter(overlay: HTMLElement): void;
   exit(overlay: HTMLElement): void;
