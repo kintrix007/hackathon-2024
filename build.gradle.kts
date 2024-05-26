@@ -23,9 +23,8 @@ repositories {
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
-    implementation ("com.aallam.openai:openai-client:3.7.2")
-    implementation("io.ktor:ktor-client-apache5:2.3.11")
     implementation("com.github.kittinunf.fuel:fuel:2.3.1")
+    implementation("com.google.code.gson:gson:2.11.0")
 }
 
 // Set the JVM language level used to build the project.
