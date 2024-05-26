@@ -1,5 +1,25 @@
 import { Item } from "./item";
 
+export interface PlayerData {
+  money: number;
+  level: number;
+  weapon: string;
+  shield: string;
+  consumables: string[];
+}
+
+export function savePlayerData(newData: PlayerData) {
+  localStorage.setItem("playerData", JSON.stringify(newData));
+}
+
+export function loadPlayerData(): PlayerData | null {
+  const playerDataStr = localStorage.getItem("playerData");
+  if (playerDataStr == null) return null;
+
+  return JSON.parse(playerDataStr);
+}
+
+
 export class Player {
     public maxHealthPoints: number = 300;
     public healthPoints: number = 300;
@@ -21,7 +41,28 @@ export class Player {
         this.sprite = document.createElement("img");
         this.sprite.src = "/assets/player.png";
         this.level = 1;
-      }
+
+        const data = loadPlayerData();
+        if (data != null) {
+            this.money = data.money;
+            this.level = data.level;
+            this.playerWeapon = new Item(data.weapon);
+            this.playerShield = new Item(data.shield);
+            this.consumables = data.consumables.map(id => new Item(id));
+        }
+    }
+
+    public save() {
+        const data = <PlayerData>{
+            money: this.money,
+            level: this.level,
+            weapon: this.playerWeapon.itemID,
+            shield: this.playerShield.itemID,
+            consumables: this.consumables.map(x => x.itemID),
+        };
+
+        savePlayerData(data);
+    }
 
     public useItem(item: Item): void {
         if (item.isConsumable()) {
