@@ -3,7 +3,7 @@ import { Item } from "./item";
 export class Player {
     public maxHealthPoints: number = 100;
     public healthPoints: number = 100;
-    public armorPoints: number = 0;
+    public armorPoints: number = 20;
     public money: number = 250;
     public actionPoints: number = 0;
 

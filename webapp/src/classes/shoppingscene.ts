@@ -10,6 +10,7 @@ export class ShoppingScene implements Scene {
     shopUIoverlay: HTMLImageElement;
     state: GameState;
     currentDescription: string | null;
+    battleButton: HTMLImageElement;
 
     constructor(state: GameState) {
         this.state = state;
@@ -21,6 +22,9 @@ export class ShoppingScene implements Scene {
 
         this.shopUIoverlay = document.createElement("img");
         this.shopUIoverlay.src = "/assets/shop_overlay.png";
+
+        this.battleButton = document.createElement("img");
+        this.battleButton.src = "/assets/shop_overlay_battle.png";
         this.currentDescription = null;
     }
 
@@ -97,6 +101,7 @@ export class ShoppingScene implements Scene {
 
     static purchase(player: Player, item: Item): boolean {
       if (player.money < item.cost) return false;
+      if (player.consumables.length >= 4) return false;
 
       player.money -= item.cost;
       player.addItem(item);
@@ -106,13 +111,26 @@ export class ShoppingScene implements Scene {
     draw(ctx: CanvasRenderingContext2D) {
         ctx.drawImage(this.shopbackground, 0, 0, ctx.canvas.width, ctx.canvas.height)        
         ctx.drawImage(this.shopUIoverlay, 0, 0, ctx.canvas.width, ctx.canvas.height)
-        ctx.drawImage(this.player.sprite, 110, 350, 384, 384)
-
+        ctx.drawImage(this.player.sprite, 130, 350, 384, 384)
+        ctx.drawImage(this.battleButton, 0, 0, ctx.canvas.width, ctx.canvas.height)
+        
+        ctx.strokeStyle = "#FFFFFF"
+        ctx.fillStyle = "#FFFFFF"
+        ctx.font = "40px Verdana"
+        ctx.fillText(String(this.state.player.money), 180, 300)
+        ctx.fillText(String(this.state.player.maxHealthPoints), 390, 300)
+        
+        
         if (this.currentDescription) {
+          ctx.fillStyle = "black"
+          ctx.fillRect(691, 75, 680, 75)
+
           ctx.fillStyle = "white";
-          ctx.font = "64px Arial";
+          ctx.font = "64px Verdana";
           ctx.textAlign = "left";
           ctx.fillText(this.currentDescription, 710, 140);
         }
+
+
     }
 }

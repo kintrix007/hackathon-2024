@@ -42,7 +42,8 @@ export class FightingScene implements Scene {
     
     ctx.drawImage(this.state.player.sprite, 180, 400, 384, 384);
 
-    //Healthbar drawing!!
+    let maxArmorPoints = 100;
+    //Healthbar & Armor-bar drawing!!
     ctx.beginPath()
     ctx.strokeStyle = "#FFFFFF"
     ctx.fillStyle = "#FFFFFF"
@@ -51,9 +52,15 @@ export class FightingScene implements Scene {
     ctx.fillStyle = "rgba(0, 0, 0, 1)";
     ctx.strokeStyle = "#FFFFFF"
     ctx.fillRect(190, 805, 364, 30)
-    ctx.fillStyle = "rgba(0, 255, 0, 1)";
+    ctx.fillStyle = "rgba(0, 200, 0, 1)";
+    //healthbar
     ctx.fillRect(190, 805, 364 * (this.state.player.healthPoints/this.state.player.maxHealthPoints), 30)
+    ctx.fillStyle = "rgba(255, 0, 255, 1)"
+    //armorbar
+    ctx.fillRect(190, 825, 364 * (this.state.player.armorPoints/maxArmorPoints), 10)
     ctx.stroke()
+
+
 
     //Healthbar for enemy! :)
     ctx.beginPath()
@@ -66,9 +73,14 @@ export class FightingScene implements Scene {
     ctx.fillRect(870, 805, 364, 30)
     ctx.fillStyle = "rgba(0, 255, 0, 1)";
     ctx.fillRect(870, 805, 364 * (this.enemy.healthPoints/this.state.player.maxHealthPoints), 30)
+    ctx.fillStyle = "rgba(255, 0, 255, 1)"
+    //armorbar
+    ctx.fillRect(870, 825, 364 * (this.enemy.armorPoints/maxArmorPoints), 10)
+
+
     ctx.stroke()
 
-
+    
 
   }
 
@@ -83,17 +95,11 @@ export class FightingScene implements Scene {
       //TODO: each item has an associated action, and gets its own button.
     }
 
-
-
-
-
-
-
-
     //TODO Generate an enemy randomly. Or don't
     this.enemy = new Enemy;
-    this.enemy.maxHealthPoints = 100;
-    this.enemy.healthPoints = 100;
+    this.enemy.maxHealthPoints = 150;
+    this.enemy.healthPoints = 20;
+    this.enemy.armorPoints = 40;
 
 
   }
