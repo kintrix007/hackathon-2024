@@ -32,7 +32,7 @@ export class ShoppingScene implements Scene {
       const button = document.createElement("button");
       button.appendChild(item.sprite);
       button.classList.add("item");
-      const desc = `${item.itemID}[${item.itemType}]: $${item.cost}`;
+      const desc = `\$${item.cost}: ${item.itemID}[${item.itemType}]`;
       button.onpointerenter = () => this.showDescription(desc);
       button.onpointerleave = () => this.showDescription(null);
       return button;
@@ -104,7 +104,7 @@ export class ShoppingScene implements Scene {
       const items = [];
       for (let i = 0; i < 5; i++) {
         const itemIds = Item.getValidIds();
-        const idx = Math.floor(Math.random() * 3)
+        const idx = Math.floor(Math.random() * itemIds.length);
         items.push(new Item(itemIds[idx]!));
       }
 
