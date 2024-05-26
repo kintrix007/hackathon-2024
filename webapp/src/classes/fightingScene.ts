@@ -15,26 +15,35 @@ export class FightingScene implements Scene {
     this.fightingBackground.src = "/assets/battle_background.png";
   }
 
-  combatCycle() {
-    while (this.state.player.actionPoints > 0) {
-      let playerAction = this.state.player.doAction();
-      this.enemy.ActionEffect(playerAction);
+  combatCycle(item: Item) {
+    if (this.state.player.actionPoints >= item.actionPointCost) {
+      this.enemy.ActionEffect(item);
       
       if (this.enemy.healthPoints == 0) {
         //TODO: get rewards, victory screen, next enemy...
       
       }
     }
+    
+    //When player has no AP: end turn
+    if (this.state.player.actionPoints == 0) {
+      while (this.enemy.actionPoints > 0) {
+        let enemyAction = this.enemy.doAction();
+        this.state.player.ActionEffect(enemyAction);
 
-    while (this.enemy.actionPoints > 0) {
-      let enemyAction = this.enemy.doAction();
-      this.state.player.ActionEffect(enemyAction);
-
-      if (this.state.player.healthPoints == 0) {
-        //TODO: death screen, maybe small penalty or smthn?
+        if (this.state.player.healthPoints == 0) {
+          //TODO: death screen, maybe small penalty or smthn?
+        }
       }
     }
+
+  }
+
+  itemClicked(item: Item) {
+    // TODO: When an item is clicked, this gets called
+    // alert(`Clicked item '${item.itemID}'`);
     
+    this.combatCycle(item) 
   }
 
   createEnemy() {
@@ -68,7 +77,11 @@ export class FightingScene implements Scene {
     //armorbar
     ctx.fillRect(190, 825, 364 * (this.state.player.armorPoints/maxArmorPoints), 10)
     ctx.stroke()
-
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "#FFFFFF"
+    ctx.font = "20px Verdana";
+    ctx.fillText(`Action Points: ${this.state.player.actionPoints}`, 200, 870)
+    ctx.stroke()
 
 
     //Healthbar for enemy! :)
@@ -88,15 +101,9 @@ export class FightingScene implements Scene {
 
 
     ctx.stroke()
-
-    
-
   }
 
-  itemClicked(item: Item) {
-    // TODO: When an item is clicked, this gets called
-    alert(`Clicked item '${item.itemID}'`);
-  }
+  
 
   getItemButton(item: Item) {
     const button = document.createElement("button");

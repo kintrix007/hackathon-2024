@@ -58,6 +58,8 @@ export class Item {
           this.itemType = "weapon";
           this.baseDamage = data.baseDamage;
           this.armorBypassDamage = data.armorBypassDamage;
+          //this.actionPointCost = data.actionPointCost;
+          
           break;
         case "shield":
           this.itemType = "shield";

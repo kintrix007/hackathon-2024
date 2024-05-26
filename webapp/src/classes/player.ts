@@ -5,7 +5,7 @@ export class Player {
     public healthPoints: number = 100;
     public armorPoints: number = 20;
     public money: number = 250;
-    public actionPoints: number = 0;
+    public actionPoints: number = 5;
 
     public incomingDMGBoost: number = 1;
 

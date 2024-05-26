@@ -3,7 +3,8 @@
     "cost": 5,
     "type": "weapon",
     "baseDamage": 10,
-    "armorBypassDamage": 5
+    "armorBypassDamage": 0,
+    "actionPointCost": 1
   },
   "shield": {
     "cost": 10,
