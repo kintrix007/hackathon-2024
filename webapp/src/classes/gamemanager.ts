@@ -27,7 +27,7 @@ export function initialize(score: number) {
     };
 
 
-    sceneManager.change_scene(new TitleScene(gameState));
+    sceneManager.change_scene(new ShoppingScene(gameState));
 }
 
 // Updates the game one frame at a time.

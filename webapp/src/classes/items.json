@@ -90,7 +90,7 @@
     "armorPoints": 250,
     "displayName": "windows Defender"
   },
-  "linux_usb": {
+  "usb": {
     "type": "consumable",
     "cost": 1000,
     "actionsPointCost": 8,
@@ -181,7 +181,7 @@
     "comment": "",
     "displayName": "Programmer serum"
   },
-  "chatgpt": {
+  "chat_gpt": {
     "type": "consumable",
     "cost": 100,
     "actionsPointCost": 0,
