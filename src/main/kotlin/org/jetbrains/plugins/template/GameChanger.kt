@@ -4,7 +4,6 @@ import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.Headers
 import com.github.kittinunf.fuel.core.extensions.jsonBody
 import com.google.gson.Gson
-import com.intellij.codeInspection.InspectionManager
 import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -14,7 +13,6 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.search.FileTypeIndex
 import com.intellij.psi.search.GlobalSearchScope.projectScope
 import org.jetbrains.plugins.template.services.CentralIntelligenceAgency.Companion.getExtraTimeSpent
-import java.lang.Math.round
 import javax.xml.bind.DatatypeConverter.parseInteger
 
 class GameChanger : AnAction() {
@@ -52,7 +50,7 @@ class GameChanger : AnAction() {
         val c = Gson().toJson(code)
 
         Fuel.post("https://api.openai.com/v1/chat/completions")
-                .set(Headers.AUTHORIZATION, "")
+                .set(Headers.AUTHORIZATION, "Bearer")
                 .jsonBody("{ \"model\": \"gpt-4o\", \"messages\": [ { \"role\": \"system\", \"content\": \"" + role + "\" }, {\"role\": \"user\", \"content\": "+c+" }]}")
                 .response { result -> parseResult(result.component1(), length, time) }
 

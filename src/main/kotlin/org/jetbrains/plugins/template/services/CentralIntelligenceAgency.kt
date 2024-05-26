@@ -14,7 +14,7 @@ class CentralIntelligenceAgency {
     companion object {
 
         fun getExtraTimeSpent(): Long {
-            return Timer.updateRecordedTime() - 60000 * 1 //This is currently 1 minute (should be 30 minutes)
+            return Timer.updateRecordedTime() - 1000 * 1 //This is currently 1 minute (should be 30 minutes)
         }
     }
 
