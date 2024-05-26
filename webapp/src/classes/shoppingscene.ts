@@ -27,7 +27,7 @@ export class ShoppingScene implements Scene {
       const button = document.createElement("button");
       button.appendChild(item.sprite);
       button.classList.add("item");
-      const desc = `${item.cost}`;
+      const desc = `${item.itemID}[${item.itemType}]: $${item.cost}`;
       button.onpointerenter = () => this.showDescription(desc);
       button.onpointerleave = () => this.showDescription(null);
       return button;
@@ -35,14 +35,6 @@ export class ShoppingScene implements Scene {
 
     showDescription(desc: string | null) {
       this.currentDescription = desc;
-    }
-
-    static purchase(player: Player, item: Item) {
-      if (player.money < item.cost) return false;
-
-      player.money -= item.cost;
-      player.addItem(item);
-      return true;
     }
 
     enter(overlay: HTMLElement) {
@@ -71,7 +63,7 @@ export class ShoppingScene implements Scene {
         owned.id = "owned";
         owned.classList.add("item-list")
         for (let i = 0; i < 1; i++) {
-          const item = new Item(0);
+          const item = new Item("sword");
           const button = this.getItemButton(item)
           owned.appendChild(button);
         }
@@ -86,15 +78,22 @@ export class ShoppingScene implements Scene {
     }
 
     static generateShopItems(playerLevel: number) {
-      // Some fancy algorithm for creating items...
-      return Array.from({ length: 5 }).map(x => new Item(0));
+      const items = [];
+      for (let i = 0; i < 5; i++) {
+        const itemIds = [ "sword", "shield", "beer" ] as const;
+        const idx = Math.floor(Math.random() * 3)
+        items.push(new Item(itemIds[idx]!));
+      }
+
+      return items;
     }
 
-    playerBuysItemFromShop(player: Player, item: Item) {
-        // This function will react to a player selecting an item, and moves it to their inventory.
-        this.availableItems.push(item);
-        player.addItem(item);
-        player.getMoney(-item.getItemCost());
+    static purchase(player: Player, item: Item): boolean {
+      if (player.money < item.cost) return false;
+
+      player.money -= item.cost;
+      player.addItem(item);
+      return true;
     }
 
     draw(ctx: CanvasRenderingContext2D) {
@@ -103,7 +102,9 @@ export class ShoppingScene implements Scene {
         ctx.drawImage(this.player.sprite, 110, 350, 384, 384)
 
         if (this.currentDescription) {
-          ctx.fillText(this.currentDescription, 750, 150);
+          ctx.font = "64px Arial";
+          ctx.textAlign = "left";
+          ctx.fillText(this.currentDescription, 710, 140);
         }
     }
 }
