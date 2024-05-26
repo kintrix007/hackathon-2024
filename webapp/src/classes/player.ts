@@ -21,26 +21,29 @@ export function loadPlayerData(): PlayerData | null {
 
 
 export class Player {
+    public money: number;
+    public level: number;
+    public playerWeapon: Item = new Item("hammer");
+    public playerShield: Item = new Item("firewall_shield");
+    public consumables: Array<Item> = new Array();
+
     public maxHealthPoints: number = 300;
     public healthPoints: number = 300;
     public armorPoints: number = 20;
-    public money: number = 1500;
     public actionPoints: number = 5;
 
     public incomingDMGBoost: number = 1;
 
-    public playerWeapon: Item = new Item("hammer");
-    public playerShield: Item = new Item("firewall_shield");
-    
-    public consumables: Array<Item> = new Array();
-
     sprite: HTMLImageElement;
-    level: number;
 
     constructor() {
         this.sprite = document.createElement("img");
         this.sprite.src = "/assets/player.png";
         this.level = 1;
+        this.money = 1500;
+        this.playerWeapon = new Item("hammer");
+        this.playerShield = new Item("firewall_shield");
+        this.consumables = [];
 
         const data = loadPlayerData();
         if (data != null) {

@@ -15,8 +15,10 @@ export function onKeydown(event: KeyboardEvent) {
 
 }
 
-export function initialize() {
+export function initialize(score: number) {
     let player = new Player();
+    player.money += score;
+    player.save();
     sceneManager = new SceneManager();
 
     let gameState: GameState = {

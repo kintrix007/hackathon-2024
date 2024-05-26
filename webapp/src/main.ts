@@ -3,7 +3,7 @@ import { initialize, onKeydown, update } from './classes/gamemanager';
 
 function main() {
   const score = getScore();
-  initialize();
+  initialize(score);
 
   function loop(timestamp: DOMHighResTimeStamp) {
     update(timestamp);
@@ -17,7 +17,7 @@ function main() {
   });
 }
 
-function getScore() {
+function getScore(): number | null {
   const params = new URLSearchParams(window.location.search)
   const scoreStr = params.get("score")
   if (scoreStr != null) {
@@ -25,9 +25,11 @@ function getScore() {
     if (isNaN(score)) {
       console.error(`Score (${scoreStr}) is not a valid int`);
     } else {
-      alert(score);
+      return score
     }
   }
+
+  return null;
 }
 
 main();
