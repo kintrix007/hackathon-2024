@@ -8,19 +8,20 @@ interface WeaponData {
   type: "weapon";
   baseDamage: number;
   armorBypassDamage: number;
-  actionPointCost: number;
+  actionsPointCost: number;
   displayName: String;
 }
 
 interface ShieldData {
   type: "shield";
-  actionPointCost: number;
+  actionsPointCost: number;
   incomingDamageBoost: number;
   displayName: String;
 }
 
 interface ConsumableData {
   type: "consumable";
+  actionsPointCost: number;
   displayName: String;
 }
 
@@ -68,7 +69,7 @@ export class Item {
           this.itemType = "weapon";
           this.baseDamage = data.baseDamage;
           this.armorBypassDamage = data.armorBypassDamage;
-          this.actionPointCost = data.actionPointCost;
+          this.actionPointCost = data.actionsPointCost;
           break;
 
         case "shield":
