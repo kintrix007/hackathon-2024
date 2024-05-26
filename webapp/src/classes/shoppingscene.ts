@@ -1,6 +1,7 @@
 import { Player } from "./player"
 import { Item } from "./item";
 import { GameState, Scene } from "./sceneManager";
+import { FightingScene } from "./fightingScene"
 
 export class ShoppingScene implements Scene {
     availableItems: Array<Item>;
@@ -38,6 +39,11 @@ export class ShoppingScene implements Scene {
     }
 
     enter(overlay: HTMLElement) {
+        const goToBattle = document.createElement("button");
+        goToBattle.innerText = "Go to Battle";
+        goToBattle.onclick = () => 
+          this.state.sceneManager.change_scene(new FightingScene(this.state));
+
         const inventory = document.createElement("div");
         inventory.classList.add("inventory");
 
@@ -71,6 +77,7 @@ export class ShoppingScene implements Scene {
         inventory.appendChild(shop);
         inventory.appendChild(owned);
         overlay.appendChild(inventory);
+        overlay.appendChild(goToBattle);
     }
 
     exit(overlay: HTMLElement) {
