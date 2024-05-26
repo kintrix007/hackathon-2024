@@ -1,6 +1,27 @@
+import itemData from "./items.json";
+
+type ItemData = {
+  [key: string]: (WeaponData | ShieldData | ConsumableData) & { "cost": number; }
+};
+
+interface WeaponData {
+  type: "weapon";
+  baseDamage: number;
+  armorBypassDamage: number;
+}
+
+interface ShieldData {
+  type: "shield";
+}
+
+interface ConsumableData {
+  type: "consumable";
+}
+
 export class Item {
-    public itemType = 0;
-    public itemID = 0;
+    public itemID: string;
+    public itemType: "weapon" | "shield" | "consumable";
+
     public cost = 0;
     public actionPointCost = 1;
     public actionPointGain = 0;
@@ -14,35 +35,51 @@ export class Item {
     public incomingDamageBoost = 1;
     public sprite: HTMLImageElement;
 
-    constructor(itemID: number) {
-        //this.unpackDataFromTable(itemID);
+    constructor(itemID: string) {
         this.itemID = itemID;
-        this.itemType = -1;
+        // This will be overridden when we load the data from the JSON
+        this.itemType = "weapon";
+
         this.sprite = document.createElement("img");
-        this.sprite.src = "/assets/sword.png";
+        this.sprite.src = `/assets/${itemID}.png`;
+
+        this.constructFromJson(itemID);
     }
 
-    unpackDataFromTable(itemID: number) {
-    // something to do with getDataFromTable...
-        console.log(Item.getDataFromTable(itemID));
-    }
+    constructFromJson(itemID: string) {
+      const data = (<ItemData>itemData)[itemID];
+      if (data == null) return null;
 
-    static getDataFromTable(itemID: number) {
-    // A function for initializing the data in an Item.
-        return [0, 0, 0];
-    }
+      this.cost = data.cost;
 
+      // TODO: Fill in the rest of the data.
+      switch (data.type) {
+        case "weapon":
+          this.itemType = "weapon";
+          this.baseDamage = data.baseDamage;
+          this.armorBypassDamage = data.armorBypassDamage;
+          break;
+        case "shield":
+          this.itemType = "shield";
+          break;
+        case "consumable":
+          this.itemType = "consumable";
+          break;
+        default:
+          alert(`Item '${itemID}' has invalid type.`);
+      }
+    }
 
     isWeapon() {
-        return this.itemType === 0;
+        return this.itemType === "weapon";
     }
 
     isShield() {
-        return this.itemType === 1;
+        return this.itemType === "shield";
     }
 
     isConsumable() {
-        return this.itemType === 2;
+        return this.itemType === "consumable";
     }
 
     getActionPointCost() {

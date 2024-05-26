@@ -1,0 +1,16 @@
+{
+  "sword": {
+    "cost": 5,
+    "type": "weapon",
+    "baseDamage": 10,
+    "armorBypassDamage": 5
+  },
+  "shield": {
+    "cost": 10,
+    "type": "shield"
+  },
+  "beer": {
+    "cost": 69,
+    "type": "consumable"
+  }
+}

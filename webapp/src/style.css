@@ -36,6 +36,8 @@ button.item {
   display: flex;
   gap: 16px;
   background: #0003;
+  align-items: center;
+  height: 160px;
 
   padding: 16px;
   border: 8px solid white;
@@ -45,6 +47,7 @@ button.item {
   overflow-x: scroll;
 }
 
+/*
 .item-list::after {
   content: "";
 
@@ -55,9 +58,9 @@ button.item {
 
   width: 32px;
   height: 100%;
-  /* background: linear-gradient(to-left, #ffff, #ffff); */
   background: linear-gradient(to left, #ffff, #fff0);
 }
+*/
 
 .inventory {
   position: relative;

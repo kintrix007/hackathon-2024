@@ -4,13 +4,13 @@ export class Player {
     public maxHealthPoints: number = 0;
     public healthPoints: number = 0;
     public armorPoints: number = 0;
-    public money: number = 0;
+    public money: number = 250;
     public actionPoints: number = 0;
 
     public incomingDMGBoost: number = 1;
 
-    public playerWeapon: Item = new Item(0);
-    public playerShield: Item = new Item(1);
+    public playerWeapon: Item = new Item("sword");
+    public playerShield: Item = new Item("shield");
     
     public consumables: Array<Item> = new Array();
 
@@ -29,26 +29,24 @@ export class Player {
         }
     }
 
-    public getItem(item: Item): void {
+    public addItem(item: Item): void {
         switch (item.getItemType()) {
-            case 0:
+            case "weapon":
                 this.playerWeapon = item;
                 break;
-            case 1:
+            case "shield":
                 this.playerShield = item;
                 break;
-            case 2:
-                this.consumables.concat(item);
+            case "consumable":
+                this.consumables.push(item);
                 break;
-            default:
-                console.log("Invalid Item type (>2) retrieved");
         }
     }
 
     public getMoney(moneyGet: number): void {
         this.money = Math.max(0, this.money + moneyGet);
     }
-
+    
     public doAction(): Item {
         let chosenAction: Item;
 
