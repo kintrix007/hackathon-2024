@@ -7,6 +7,7 @@ export class Item {
 
     public baseDamage = 0;
     public armorBypassDamage = 0;
+    //public armorPoints = 0;
     
     public actionPointDamage = 0;
     public healAmount = 0;
