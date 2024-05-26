@@ -35,7 +35,7 @@ export class FightingScene implements Scene {
     }
     
     //When player has no AP: end turn
-    if (this.state.player.actionPoints == 0) {
+    if (this.state.player.actionPoints == 0 && this.enemy.actionPoints > 0) {
       const interval = setInterval(()=>{
         let enemyAction = this.enemy.doAction();
         this.state.player.ActionEffect(enemyAction);
