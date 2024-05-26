@@ -27,9 +27,9 @@ export class Player {
     public playerShield: Item = new Item("firewall_shield");
     public consumables: Array<Item> = new Array();
 
-    public maxHealthPoints: number = 300;
-    public healthPoints: number = 300;
-    public armorPoints: number = 20;
+    public maxHealthPoints: number = 600;
+    public healthPoints: number = 600;
+    public armorPoints: number = 99;
     public actionPoints: number = 5;
 
     public incomingDMGBoost: number = 1;

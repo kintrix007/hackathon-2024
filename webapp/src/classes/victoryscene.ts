@@ -3,13 +3,16 @@ import { GameState, Scene } from "./sceneManager";
 export class VictoryScene implements Scene {
     state: GameState;
     fightingBackground: HTMLImageElement;
-
+    deadclippy: HTMLImageElement;
     
     constructor(state: GameState) {
         this.state = state;
         
         this.fightingBackground = document.createElement("img");
         this.fightingBackground.src = "/assets/battle_background.png";
+
+        this.deadclippy = document.createElement("img");
+        this.deadclippy.src = "/assets/dead_clippy.png";
     }
 
     enter() {
@@ -25,6 +28,7 @@ export class VictoryScene implements Scene {
         ctx.drawImage(this.fightingBackground, 0, 0, ctx.canvas.width, ctx.canvas.height)        
     
         ctx.drawImage(this.state.player.sprite, 180, 400, 384, 384);
+        ctx.drawImage(this.deadclippy, 820, 380, 450, 450);
 
         ctx.beginPath()
         ctx.strokeStyle = "#FFFFFF"

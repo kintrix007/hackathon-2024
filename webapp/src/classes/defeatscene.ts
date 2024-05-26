@@ -4,6 +4,7 @@ export class DefeatScene implements Scene {
     state: GameState;
     fightingBackground: HTMLImageElement;
     playerDeadSprite: HTMLImageElement;
+    clippySprite: HTMLImageElement;
 
     constructor(state: GameState) {
         this.state = state;
@@ -13,6 +14,10 @@ export class DefeatScene implements Scene {
 
         this.playerDeadSprite = document.createElement("img");
         this.playerDeadSprite.src = "/assets/dead_player.png";
+
+
+        this.clippySprite = document.createElement("img");
+        this.clippySprite.src = "/assets/angry_clippy.png";
     }
 
     enter() {
@@ -27,6 +32,7 @@ export class DefeatScene implements Scene {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
         ctx.drawImage(this.fightingBackground, 0, 0, ctx.canvas.width, ctx.canvas.height)        
         ctx.drawImage(this.playerDeadSprite, 180, 400, 384, 384);
+        ctx.drawImage(this.clippySprite, 820, 380, 450, 450);
 
         
 
