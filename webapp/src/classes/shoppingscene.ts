@@ -44,7 +44,8 @@ export class ShoppingScene implements Scene {
 
     enter(overlay: HTMLElement) {
         const goToBattle = document.createElement("button");
-        goToBattle.innerText = "Go to Battle";
+        goToBattle.innerText = "";
+        goToBattle.id = "battle";
         goToBattle.onclick = () => 
           this.state.sceneManager.change_scene(new FightingScene(this.state));
 
@@ -102,7 +103,7 @@ export class ShoppingScene implements Scene {
     static generateShopItems(playerLevel: number) {
       const items = [];
       for (let i = 0; i < 5; i++) {
-        const itemIds = [ "sword", "shield", "beer" ] as const;
+        const itemIds = Item.getValidIds();
         const idx = Math.floor(Math.random() * 3)
         items.push(new Item(itemIds[idx]!));
       }

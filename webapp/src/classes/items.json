@@ -1,22 +1,194 @@
 {
-  "sword": {
-    "cost": 5,
+  "brute_force": {
     "type": "weapon",
-    "baseDamage": 10,
-    "armorBypassDamage": 5,
-    "actionPointCost": 1,
-    "displayName": "Rust(y) sword"
+    "cost": 100,
+    "actionsPointCost": 2,
+    "actionPointGain": 0,
+    "baseDamage": 75,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 0,
+    "healAmount": 0,
+    "incomingDamageBoost": 1,
+    "comment": ""
   },
-  "shield": {
-    "cost": 10,
+  "axe": {
+    "type": "weapon",
+    "cost": 500,
+    "actionsPointCost": 2,
+    "actionPointGain": 0,
+    "baseDamage": 125,
+    "armorBypassDamage": 10,
+    "actionpPointDamage": 0,
+    "healAmount": 0,
+    "incomingDamageBoost": 1,
+    "comment": ""
+  },
+  "algorithm_sword": {
+    "type": "weapon",
+    "cost": 1500,
+    "actionsPointCost": 2,
+    "actionPointGain": 0,
+    "baseDamage": 200,
+    "armorBypassDamage": 50,
+    "actionpPointDamage": 1,
+    "healAmount": 0,
+    "incomingDamageBoost": 1,
+    "comment": ""
+  },
+  "bugswatter_3000": {
+    "type": "weapon",
+    "cost": 3000,
+    "actionsPointCost": 1,
+    "actionPointGain": 0,
+    "baseDamage": 400,
+    "armorBypassDamage": 200,
+    "actionpPointDamage": 1,
+    "healAmount": 0,
+    "incomingDamageBoost": 2,
+    "comment": ""
+  },
+  "antivirus_shield": {
     "type": "shield",
-    "actionPointCost": 2,
-    "incomingDamageBoost": 0.8,
-    "displayName": "Wooden Shield"
+    "cost": 250,
+    "actionsPointCost": 1,
+    "actionPointGain": 0,
+    "baseDamage": 0,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 0,
+    "incomingDamageBoost": 1,
+    "comment": "",
+    "armorPoints": 100
   },
-  "beer": {
-    "cost": 69,
+  "firewall": {
+    "type": "shield",
+    "cost": 350,
+    "actionsPointCost": 2,
+    "actionPointGain": 0,
+    "baseDamage": 0,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 0,
+    "incomingDamageBoost": 5,
+    "comment": "",
+    "armorPoints": 150
+  },
+  "windows_defender": {
+    "type": "shield",
+    "cost": 1500,
+    "actionsPointCost": 2,
+    "actionPointGain": 0,
+    "baseDamage": 0,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 0,
+    "incomingDamageBoost": 1,
+    "comment": "",
+    "armorPoints": 250
+  },
+  "linux_usb": {
     "type": "consumable",
-    "displayName": "Beer"
+    "cost": 1000,
+    "actionsPointCost": 8,
+    "actionPointGain": 0,
+    "baseDamage": "infinite",
+    "armorBypassDamage": "infinite",
+    "actionpPointDamage": 0,
+    "healAmount": 0,
+    "incomingDamageBoost": 1,
+    "comment": ""
+  },
+  "mouse": {
+    "type": "consumable",
+    "cost": 150,
+    "actionsPointCost": 1,
+    "actionPointGain": 0,
+    "baseDamage": 0,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 0,
+    "healAmount": 100,
+    "incomingDamageBoost": 1,
+    "comment": "get back control"
+  },
+  "mom_xbox": {
+    "type": "consumable",
+    "cost": 700,
+    "actionsPointCost": 3,
+    "actionPointGain": 1,
+    "baseDamage": 0,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 4,
+    "healAmount": 0,
+    "incomingDamageBoost": 1,
+    "comment": ""
+  },
+  "switch": {
+    "type": "consumable",
+    "cost": 500,
+    "actionsPointCost": 2,
+    "actionPointGain": 0,
+    "baseDamage": 0,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 0,
+    "healAmount": 450,
+    "incomingDamageBoost": 1,
+    "comment": "mental health"
+  },
+  "keyboard_smash": {
+    "type": "consumable",
+    "cost": 350,
+    "actionsPointCost": "random",
+    "actionPointGain": 0,
+    "baseDamage": "random",
+    "armorBypassDamage": "random",
+    "actionpPointDamage": "random",
+    "healAmount": 0,
+    "incomingDamageBoost": 1,
+    "comment": ""
+  },
+  "garbage_collector": {
+    "type": "consumable",
+    "cost": 250,
+    "actionsPointCost": 2,
+    "actionPointGain": 4,
+    "baseDamage": 0,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 0,
+    "healAmount": 250,
+    "incomingDamageBoost": 1,
+    "comment": ""
+  },
+  "coffee": {
+    "type": "consumable",
+    "cost": 150,
+    "actionsPointCost": 1,
+    "actionPointGain": 0,
+    "baseDamage": 0,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 0,
+    "healAmount": 50,
+    "incomingDamageBoost": "random",
+    "comment": ""
+  },
+  "chatgpt": {
+    "type": "consumable",
+    "cost": 100,
+    "actionsPointCost": 0,
+    "actionPointGain": 2,
+    "baseDamage": 0,
+    "armorBypassDamage": 0,
+    "actionpPointDamage": 0,
+    "healAmount": 0,
+    "incomingDamageBoost": 1,
+    "comment": ""
+  },
+  "wii_controller": {
+    "type": "consumable",
+    "cost": 200,
+    "actionsPointCost": 3,
+    "actionPointGain": 0,
+    "baseDamage": 200,
+    "armorBypassDamage": 50,
+    "actionpPointDamage": 0,
+    "healAmount": 0,
+    "incomingDamageBoost": 1,
+    "comment": "knocks your teeth out"
   }
 }

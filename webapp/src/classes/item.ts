@@ -85,6 +85,10 @@ export class Item {
       }
     }
 
+    static getValidIds() {
+      return Object.keys(itemData);
+    }
+
     isWeapon() {
         return this.itemType === "weapon";
     }
