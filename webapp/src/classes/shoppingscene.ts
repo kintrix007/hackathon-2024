@@ -54,6 +54,9 @@ export class ShoppingScene implements Scene {
         const shop = document.createElement("div");
         const owned = document.createElement("div");
 
+        const weapon = this.getItemButton(this.player.playerWeapon);
+        const shield = this.getItemButton(this.player.playerShield);
+        
         shop.id = "shop";
         shop.classList.add("item-list")
         for (const item of this.availableItems) {
@@ -62,7 +65,18 @@ export class ShoppingScene implements Scene {
             if (ShoppingScene.purchase(this.state.player, item)) {
               this.availableItems = this.availableItems.filter(x => x != item);
               button.remove();
-              owned.appendChild(this.getItemButton(item));
+
+              switch (item.itemType) {
+                case "weapon":
+                  weapon.replaceWith(this.getItemButton(item))
+                  break;
+                case "shield":
+                  shield.replaceWith(this.getItemButton(item))
+                  break;
+                case "consumable":
+                  owned.appendChild(this.getItemButton(item));
+                  break;
+              }
               this.showDescription(null);
             }
           }
@@ -72,16 +86,13 @@ export class ShoppingScene implements Scene {
 
         owned.id = "owned";
         owned.classList.add("item-list")
-        for (let i = 0; i < 1; i++) {
-          const item = new Item("sword");
-          const button = this.getItemButton(item)
-          owned.appendChild(button);
-        }
 
         inventory.appendChild(shop);
         inventory.appendChild(owned);
         overlay.appendChild(inventory);
         overlay.appendChild(goToBattle);
+        overlay.appendChild(weapon);
+        overlay.appendChild(shield);
     }
 
     exit(overlay: HTMLElement) {
