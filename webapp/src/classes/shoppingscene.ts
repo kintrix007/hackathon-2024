@@ -85,6 +85,10 @@ export class ShoppingScene implements Scene {
           shop.appendChild(button);
         }
 
+        for (const item of this.state.player.consumables) {
+          owned.append(this.getItemButton(item));
+        }
+
         owned.id = "owned";
         owned.classList.add("item-list")
 
@@ -117,6 +121,7 @@ export class ShoppingScene implements Scene {
 
       player.money -= item.cost;
       player.addItem(item);
+      player.save();
       return true;
     }
 
