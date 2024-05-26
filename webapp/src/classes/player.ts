@@ -53,7 +53,7 @@ export class Player {
         while (true) {
             //TODO: implement action choice
             chosenAction = this.playerWeapon;
-
+            
             if (chosenAction.actionPointCost <= this.actionPoints) {
                 this.useItem(chosenAction);
                 break;
@@ -69,10 +69,8 @@ export class Player {
     }
 
     public getActions(): Array<Item> {
-        let actions = this.consumables
-        actions.concat(this.playerWeapon, this.playerShield)
-
-        return actions
+        let actions = this.consumables;
+        return actions.concat(this.playerWeapon, this.playerShield);
     }
 
     public ActionEffect(effectItem: Item): void {

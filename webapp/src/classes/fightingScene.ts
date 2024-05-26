@@ -1,5 +1,6 @@
 import { Enemy } from "./enemy";
 import { GameState, Scene } from "./sceneManager";
+import { Item } from "./item";
 
 export class FightingScene implements Scene {
   state: GameState;
@@ -35,6 +36,14 @@ export class FightingScene implements Scene {
     }
     
   }
+
+  createEnemy() {
+    //TODO Generate an enemy randomly. Or don't
+    this.enemy = new Enemy();
+    this.enemy.maxHealthPoints = 100;
+    this.enemy.healthPoints = 100;
+  }
+
 
   draw(ctx: CanvasRenderingContext2D) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
@@ -72,30 +81,32 @@ export class FightingScene implements Scene {
 
   }
 
-  enter(overlay: HTMLElement) {
-    overlay.innerHTML = `
-      <button>Attack</button>
-      <button>Defend</button>
-      <button>Use Item</button>
-    `;
+  itemClicked(item: Item) {
+    // TODO: When an item is clicked, this gets called
+    alert(`Clicked item '${item.itemID}'`);
+  }
 
-    for (var action of this.state.player.getActions()) {
-      //TODO: each item has an associated action, and gets its own button.
+  getItemButton(item: Item) {
+    const button = document.createElement("button");
+    button.appendChild(item.sprite);
+    button.classList.add("item");
+    button.onpointerenter = () => {};
+    button.onpointerleave = () => {};
+    return button;
+  }
+
+  enter(overlay: HTMLElement) {
+    this.createEnemy();
+
+    const items = document.createElement("div");
+
+    for (const item of this.state.player.getActions()) {
+      const button = this.getItemButton(item);
+      button.onclick = () => this.itemClicked(item);
+      items.appendChild(button);
     }
 
-
-
-
-
-
-
-
-    //TODO Generate an enemy randomly. Or don't
-    this.enemy = new Enemy;
-    this.enemy.maxHealthPoints = 100;
-    this.enemy.healthPoints = 100;
-
-
+    overlay.appendChild(items);
   }
 
   exit(overlay: HTMLElement) {
