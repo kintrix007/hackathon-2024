@@ -9,8 +9,8 @@ export class Player {
 
     public incomingDMGBoost: number = 1;
 
-    public playerWeapon: Item = new Item("brute_force");
-    public playerShield: Item = new Item("antivirus_shield");
+    public playerWeapon: Item = new Item("hammer");
+    public playerShield: Item = new Item("firewall_shield");
     
     public consumables: Array<Item> = new Array();
 
@@ -24,9 +24,10 @@ export class Player {
       }
 
     public useItem(item: Item): void {
-        if (item.isConsumable()) {
-            this.consumables.splice(this.consumables.indexOf(item), 1)
+        if (item.itemType === "consumable") {
+            this.consumables = this.consumables.filter(listitem => listitem !== item);
         }
+
     }
 
     public addItem(item: Item): void {

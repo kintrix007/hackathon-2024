@@ -1,5 +1,5 @@
 {
-  "brute_force": {
+  "hammer": {
     "type": "weapon",
     "cost": 100,
     "actionsPointCost": 2,
@@ -25,7 +25,7 @@
     "comment": "",
     "displayName": "Rust(y) axe"
   },
-  "algorithm_sword": {
+  "sword": {
     "type": "weapon",
     "cost": 1500,
     "actionsPointCost": 2,
@@ -36,9 +36,9 @@
     "healAmount": 0,
     "incomingDamageBoost": 1,
     "comment": "",
-    "displayName": "Algorithm"
+    "displayName": "Algorithm Sword"
   },
-  "bugswatter_3000": {
+  "bugswatter3000": {
     "type": "weapon",
     "cost": 3000,
     "actionsPointCost": 1,
@@ -64,7 +64,7 @@
     "armorPoints": 100,
     "displayName": "Norton Antivirus"
   },
-  "firewall": {
+  "firewall_shield": {
     "type": "shield",
     "cost": 350,
     "actionsPointCost": 2,
@@ -116,7 +116,7 @@
     "comment": "get back control",
     "displayName": "Mouse of Control"
   },
-  "mom_xbox": {
+  "xbox_controller": {
     "type": "consumable",
     "cost": 700,
     "actionsPointCost": 3,
@@ -129,7 +129,7 @@
     "comment": "",
     "displayName": "My turn on the xbox"
   },
-  "switch": {
+  "switch_controller": {
     "type": "consumable",
     "cost": 500,
     "actionsPointCost": 2,
@@ -142,7 +142,7 @@
     "comment": "mental health",
     "displayName": "Switch Controller"
   },
-  "keyboard_smash": {
+  "keyboard": {
     "type": "consumable",
     "cost": 350,
     "actionsPointCost": "random",
@@ -155,7 +155,7 @@
     "comment": "",
     "displayName": "Keysmash"
   },
-  "garbage_collector": {
+  "garbage": {
     "type": "consumable",
     "cost": 250,
     "actionsPointCost": 2,

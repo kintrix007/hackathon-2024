@@ -1,11 +1,11 @@
 import { Item } from "./item";
 
 export class Enemy {
-    public maxHealthPoints: number = 0;
-    public healthPoints: number = 0;
-    public armorPoints: number = 0;
+    public maxHealthPoints: number = 300;
+    public healthPoints: number = 300;
+    public armorPoints: number = 50;
     public money: number = 0;
-    public actionPoints: number = 0;
+    public actionPoints: number = 4;
 
     public incomingDMGBoost: number = 1;
 

@@ -8,6 +8,7 @@ export class FightingScene implements Scene {
   fightingBackground: HTMLImageElement;
   enemy: Enemy;
   latestAction: String;
+  enemySprite: HTMLImageElement;
 
   constructor(state: GameState) {
     this.state = state;
@@ -15,6 +16,9 @@ export class FightingScene implements Scene {
     
     this.fightingBackground = document.createElement("img");
     this.fightingBackground.src = "/assets/battle_background.png";
+
+    this.enemySprite = document.createElement("img");
+    this.enemySprite.src = "/assets/angry_clippy.png";
     this.latestAction = ``;
   }
 
@@ -71,6 +75,8 @@ export class FightingScene implements Scene {
     ctx.drawImage(this.fightingBackground, 0, 0, ctx.canvas.width, ctx.canvas.height)        
     
     ctx.drawImage(this.state.player.sprite, 180, 400, 384, 384);
+    ctx.drawImage(this.enemySprite, 860, 400, 450, 450);
+
 
     let maxArmorPoints = 100;
     //Healthbar & Armor-bar drawing!!
@@ -151,10 +157,6 @@ export class FightingScene implements Scene {
 
     //TODO Generate an enemy randomly. Or don't
     this.enemy = new Enemy;
-    this.enemy.maxHealthPoints = 150;
-    this.enemy.healthPoints = 1;
-    this.enemy.armorPoints = 100;
-    this.enemy.actionPoints = 4;
   }
 
   exit(overlay: HTMLElement) {
