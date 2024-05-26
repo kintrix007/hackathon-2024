@@ -79,7 +79,7 @@ export class Enemy {
             this.armorPoints -= armorDamage; 
         }
 
-        this.healthPoints = Math.min(0, this.healthPoints + overflowDamage - this.incomingDMGBoost * effectItem.armorBypassDamage)
+        this.healthPoints = Math.max(0, this.healthPoints + overflowDamage - this.incomingDMGBoost * effectItem.armorBypassDamage)
 
         this.actionPoints -= effectItem.actionPointDamage; 
 

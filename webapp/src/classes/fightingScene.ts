@@ -18,7 +18,8 @@ export class FightingScene implements Scene {
   combatCycle(item: Item) {
     if (this.state.player.actionPoints >= item.actionPointCost) {
       this.enemy.ActionEffect(item);
-      
+      this.state.player.doAction(item)
+
       if (this.enemy.healthPoints == 0) {
         //TODO: get rewards, victory screen, next enemy...
       
@@ -27,16 +28,21 @@ export class FightingScene implements Scene {
     
     //When player has no AP: end turn
     if (this.state.player.actionPoints == 0) {
-      while (this.enemy.actionPoints > 0) {
+      const interval = setInterval(()=>{
         let enemyAction = this.enemy.doAction();
         this.state.player.ActionEffect(enemyAction);
 
         if (this.state.player.healthPoints == 0) {
           //TODO: death screen, maybe small penalty or smthn?
         }
-      }
-    }
 
+        if (this.enemy.actionPoints <= 0) {
+          this.state.player.actionPoints = 4
+          this.enemy.actionPoints = 4  
+          clearInterval(interval);
+        }
+      }, 1000)
+    }
   }
 
   itemClicked(item: Item) {
@@ -77,6 +83,7 @@ export class FightingScene implements Scene {
     //armorbar
     ctx.fillRect(190, 825, 364 * (this.state.player.armorPoints/maxArmorPoints), 10)
     ctx.stroke()
+    //Actionpoints
     ctx.fillStyle = "white";
     ctx.strokeStyle = "#FFFFFF"
     ctx.font = "20px Verdana";
@@ -98,8 +105,12 @@ export class FightingScene implements Scene {
     ctx.fillStyle = "rgba(255, 0, 255, 1)"
     //armorbar
     ctx.fillRect(870, 825, 364 * (this.enemy.armorPoints/maxArmorPoints), 10)
-
-
+    ctx.stroke()
+    //actionpoints
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "#FFFFFF"
+    ctx.font = "20px Verdana";
+    ctx.fillText(`Action Points: ${this.enemy.actionPoints}`, 1000, 870)
     ctx.stroke()
   }
 
@@ -130,8 +141,9 @@ export class FightingScene implements Scene {
     //TODO Generate an enemy randomly. Or don't
     this.enemy = new Enemy;
     this.enemy.maxHealthPoints = 150;
-    this.enemy.healthPoints = 20;
-    this.enemy.armorPoints = 40;
+    this.enemy.healthPoints = 100;
+    this.enemy.armorPoints = 100;
+    this.enemy.actionPoints = 4;
   }
 
   exit(overlay: HTMLElement) {

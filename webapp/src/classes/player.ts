@@ -47,25 +47,13 @@ export class Player {
         this.money = Math.max(0, this.money + moneyGet);
     }
     
-    public doAction(): Item {
-        let chosenAction: Item;
+    public doAction(item: Item): void {
+        //Action was valid
+        this.useItem(item)
 
-        while (true) {
-            //TODO: implement action choice
-            chosenAction = this.playerWeapon;
-            
-            if (chosenAction.actionPointCost <= this.actionPoints) {
-                this.useItem(chosenAction);
-                break;
-            } else {
-                //TODO: Text Splash for too few AP
-            }
-        }
-
-        this.healthPoints += chosenAction.healAmount;
-        this.actionPoints += chosenAction.actionPointGain;
-        this.actionPoints -= chosenAction.actionPointCost;
-        return chosenAction;
+        this.healthPoints += item.healAmount;
+        //this.actionPoints += item.actionPointGain;
+        this.actionPoints -= item.actionPointCost;
     }
 
     public getActions(): Array<Item> {
@@ -84,7 +72,7 @@ export class Player {
             this.armorPoints -= armorDamage; 
         }
 
-        this.healthPoints = Math.min(0, this.healthPoints + overflowDamage - this.incomingDMGBoost * effectItem.armorBypassDamage)
+        this.healthPoints = Math.max(0, this.healthPoints + overflowDamage - this.incomingDMGBoost * effectItem.armorBypassDamage)
 
         this.actionPoints -= effectItem.actionPointDamage; 
 

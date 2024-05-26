@@ -3,12 +3,14 @@
     "cost": 5,
     "type": "weapon",
     "baseDamage": 10,
-    "armorBypassDamage": 0,
+    "armorBypassDamage": 5,
     "actionPointCost": 1
   },
   "shield": {
     "cost": 10,
-    "type": "shield"
+    "type": "shield",
+    "actionPointCost": 2,
+    "incomingDamageBoost": 0.8
   },
   "beer": {
     "cost": 69,
