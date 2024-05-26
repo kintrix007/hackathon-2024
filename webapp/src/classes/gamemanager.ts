@@ -11,7 +11,7 @@ const ctx = canvas.getContext("2d")!;
 
 let sceneManager: SceneManager;
 
-export function onKeydown() {
+export function onKeydown(event: KeyboardEvent) {
 
 }
 
