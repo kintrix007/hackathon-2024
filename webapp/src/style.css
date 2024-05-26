@@ -14,6 +14,22 @@
   position: absolute;
 }
 
+#battle {
+  position: absolute;
+  top: 730px;
+  left: 75px;
+
+  width: 475px;
+  height: 100px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+}
+
+#battle:hover {
+  background: #fff3;
+}
+
 button.item {
   background: #0003;
 
