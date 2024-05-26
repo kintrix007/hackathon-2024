@@ -97,7 +97,7 @@ export class Player {
         this.useItem(item)
 
         this.healthPoints += item.healAmount;
-        //this.actionPoints += item.actionPointGain;
+        this.actionPoints += item.actionPointGain;
         this.actionPoints -= item.actionPointCost;
     }
 

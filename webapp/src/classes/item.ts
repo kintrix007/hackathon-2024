@@ -14,7 +14,7 @@ interface WeaponData {
 
 interface ShieldData {
   type: "shield";
-  actionsPointCost: number;
+  actionPointCost: number;
   incomingDamageBoost: number;
   displayName: String;
 }

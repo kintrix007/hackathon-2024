@@ -63,7 +63,7 @@ export class Enemy {
         }
 
         this.healthPoints += chosenAction.healAmount;
-        //this.actionPoints += chosenAction.actionPointGain;
+        this.actionPoints += chosenAction.actionPointGain;
         this.actionPoints -= chosenAction.actionPointCost;
         return chosenAction;
     }
