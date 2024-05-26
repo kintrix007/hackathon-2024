@@ -1,16 +1,16 @@
 import { Item } from "./item";
 
 export class Player {
-    public maxHealthPoints: number = 100;
-    public healthPoints: number = 100;
+    public maxHealthPoints: number = 300;
+    public healthPoints: number = 300;
     public armorPoints: number = 20;
-    public money: number = 250;
+    public money: number = 1500;
     public actionPoints: number = 5;
 
     public incomingDMGBoost: number = 1;
 
-    public playerWeapon: Item = new Item("sword");
-    public playerShield: Item = new Item("shield");
+    public playerWeapon: Item = new Item("brute_force");
+    public playerShield: Item = new Item("antivirus_shield");
     
     public consumables: Array<Item> = new Array();
 

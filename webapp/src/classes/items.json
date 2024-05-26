@@ -9,7 +9,8 @@
     "actionpPointDamage": 0,
     "healAmount": 0,
     "incomingDamageBoost": 1,
-    "comment": ""
+    "comment": "",
+    "displayName": "Brute Force"
   },
   "axe": {
     "type": "weapon",
@@ -21,7 +22,8 @@
     "actionpPointDamage": 0,
     "healAmount": 0,
     "incomingDamageBoost": 1,
-    "comment": ""
+    "comment": "",
+    "displayName": "Rust(y) axe"
   },
   "algorithm_sword": {
     "type": "weapon",
@@ -33,7 +35,8 @@
     "actionpPointDamage": 1,
     "healAmount": 0,
     "incomingDamageBoost": 1,
-    "comment": ""
+    "comment": "",
+    "displayName": "Algorithm"
   },
   "bugswatter_3000": {
     "type": "weapon",
@@ -45,7 +48,8 @@
     "actionpPointDamage": 1,
     "healAmount": 0,
     "incomingDamageBoost": 2,
-    "comment": ""
+    "comment": "",
+    "displayName": "Bugswatter 3000"
   },
   "antivirus_shield": {
     "type": "shield",
@@ -57,7 +61,8 @@
     "actionpPointDamage": 0,
     "incomingDamageBoost": 1,
     "comment": "",
-    "armorPoints": 100
+    "armorPoints": 100,
+    "displayName": "Norton Antivirus"
   },
   "firewall": {
     "type": "shield",
@@ -69,7 +74,8 @@
     "actionpPointDamage": 0,
     "incomingDamageBoost": 5,
     "comment": "",
-    "armorPoints": 150
+    "armorPoints": 150,
+    "displayName": "Windows Firewall"
   },
   "windows_defender": {
     "type": "shield",
@@ -81,7 +87,8 @@
     "actionpPointDamage": 0,
     "incomingDamageBoost": 1,
     "comment": "",
-    "armorPoints": 250
+    "armorPoints": 250,
+    "displayName": "windows Defender"
   },
   "linux_usb": {
     "type": "consumable",
@@ -93,7 +100,8 @@
     "actionpPointDamage": 0,
     "healAmount": 0,
     "incomingDamageBoost": 1,
-    "comment": ""
+    "comment": "",
+    "displayName": "Linux installation drive"
   },
   "mouse": {
     "type": "consumable",
@@ -105,7 +113,8 @@
     "actionpPointDamage": 0,
     "healAmount": 100,
     "incomingDamageBoost": 1,
-    "comment": "get back control"
+    "comment": "get back control",
+    "displayName": "Mouse of Control"
   },
   "mom_xbox": {
     "type": "consumable",
@@ -117,7 +126,8 @@
     "actionpPointDamage": 4,
     "healAmount": 0,
     "incomingDamageBoost": 1,
-    "comment": ""
+    "comment": "",
+    "displayName": "My turn on the xbox"
   },
   "switch": {
     "type": "consumable",
@@ -129,7 +139,8 @@
     "actionpPointDamage": 0,
     "healAmount": 450,
     "incomingDamageBoost": 1,
-    "comment": "mental health"
+    "comment": "mental health",
+    "displayName": "Switch Controller"
   },
   "keyboard_smash": {
     "type": "consumable",
@@ -141,7 +152,8 @@
     "actionpPointDamage": "random",
     "healAmount": 0,
     "incomingDamageBoost": 1,
-    "comment": ""
+    "comment": "",
+    "displayName": "Keysmash"
   },
   "garbage_collector": {
     "type": "consumable",
@@ -153,7 +165,8 @@
     "actionpPointDamage": 0,
     "healAmount": 250,
     "incomingDamageBoost": 1,
-    "comment": ""
+    "comment": "",
+    "displayName": "Garbage Collector"
   },
   "coffee": {
     "type": "consumable",
@@ -165,7 +178,8 @@
     "actionpPointDamage": 0,
     "healAmount": 50,
     "incomingDamageBoost": "random",
-    "comment": ""
+    "comment": "",
+    "displayName": "Programmer serum"
   },
   "chatgpt": {
     "type": "consumable",
@@ -177,7 +191,8 @@
     "actionpPointDamage": 0,
     "healAmount": 0,
     "incomingDamageBoost": 1,
-    "comment": ""
+    "comment": "",
+    "displayName": "ChatGPT"
   },
   "wii_controller": {
     "type": "consumable",
@@ -189,6 +204,7 @@
     "actionpPointDamage": 0,
     "healAmount": 0,
     "incomingDamageBoost": 1,
-    "comment": "knocks your teeth out"
+    "comment": "knocks your teeth out",
+    "displayName": "Wii Controller"
   }
 }

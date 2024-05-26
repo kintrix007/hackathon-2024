@@ -32,7 +32,7 @@ export class ShoppingScene implements Scene {
       const button = document.createElement("button");
       button.appendChild(item.sprite);
       button.classList.add("item");
-      const desc = `${item.itemID}[${item.itemType}]: $${item.cost}`;
+      const desc = `${item.displayName}: $${item.cost}`;
       button.onpointerenter = () => this.showDescription(desc);
       button.onpointerleave = () => this.showDescription(null);
       return button;
@@ -104,7 +104,7 @@ export class ShoppingScene implements Scene {
       const items = [];
       for (let i = 0; i < 5; i++) {
         const itemIds = Item.getValidIds();
-        const idx = Math.floor(Math.random() * 3)
+        const idx = Math.floor(Math.random() * 16)
         items.push(new Item(itemIds[idx]!));
       }
 
@@ -138,7 +138,7 @@ export class ShoppingScene implements Scene {
           ctx.fillRect(691, 75, 680, 75)
 
           ctx.fillStyle = "white";
-          ctx.font = "64px Verdana";
+          ctx.font = "50px Verdana";
           ctx.textAlign = "left";
           ctx.fillText(this.currentDescription, 710, 140);
         }
